@@ -110,6 +110,31 @@ $touch-max-height: 788px;
   justify-content: space-between;
 }
 
+.time-container {
+  display: flex;
+  position: relative;
+  padding-top: 5px;
+  justify-content: center;
+
+  &.disable-seconds {
+    .ngx-mat-timepicker {
+      .table {
+        margin-left: 9px;
+      }
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+
 .mat-datepicker-content-touch {
   display: block;
   max-height: 80vh;
