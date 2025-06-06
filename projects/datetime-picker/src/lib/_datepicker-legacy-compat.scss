@@ -1,5 +1,5 @@
-@use '../button/button-theme';
-@use '../button/icon-button-theme';
+@use '@angular/material/button/button-theme';
+@use '@angular/material/button/icon-button-theme';
 
 @mixin legacy-button-compat-theme($theme) {
   .mat-datepicker-content {
