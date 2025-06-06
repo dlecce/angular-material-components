@@ -1,1 +1,8 @@
 <h1>{{title}}</h1>
+
+<mat-form-field>
+  <mat-label>From</mat-label>
+  <input matInput [ngxMatDatetimePicker]="picker" [formControl]="dateControl" />
+  <ngx-mat-datepicker-toggle matSuffix [for]="picker" />
+  <ngx-mat-datetime-picker #picker />
+</mat-form-field>

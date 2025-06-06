@@ -1,11 +1,26 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { NgxMatDatepickerInput, NgxMatDatepickerToggle, NgxMatDatetimePicker } from 'datetime-picker';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgxMatDatetimePicker,
+    NgxMatDatepickerToggle,
+    NgxMatDatepickerInput
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'demo';
+  dateControl = new FormControl<Date | null>(null);
 }
