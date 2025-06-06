@@ -64,12 +64,12 @@ let uniqueIdCounter = 0;
 @Component({
   selector: 'ngx-mat-month-view',
   templateUrl: 'month-view.html',
-  exportAs: 'matMonthView',
+  exportAs: 'ngxMatMonthView',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgxMatCalendarBody],
 })
-export class MatMonthView<D> implements AfterContentInit, OnChanges, OnDestroy {
+export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestroy {
   readonly _changeDetectorRef = inject(ChangeDetectorRef);
   private _dateFormats = inject<MatDateFormats>(MAT_DATE_FORMATS, {optional: true})!;
   _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;

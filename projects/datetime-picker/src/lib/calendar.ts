@@ -30,7 +30,7 @@ import {Subject, Subscription} from 'rxjs';
 import {MatCalendarUserEvent, MatCalendarCellClassFunction} from './calendar-body';
 import {createMissingDateImplError} from './datepicker-errors';
 import {MatDatepickerIntl} from './datepicker-intl';
-import {MatMonthView} from './month-view';
+import {NgxMatMonthView} from './month-view';
 import {
   getActiveOffset,
   isSameMultiYearView,
@@ -237,7 +237,7 @@ export class NgxMatCalendarHeader<D> {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER],
-  imports: [CdkPortalOutlet, CdkMonitorFocus, MatMonthView, MatYearView, MatMultiYearView],
+  imports: [CdkPortalOutlet, CdkMonitorFocus, NgxMatMonthView, MatYearView, MatMultiYearView],
 })
 export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
   private _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
@@ -355,7 +355,7 @@ export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, On
   @Output() readonly _userDragDrop = new EventEmitter<MatCalendarUserEvent<DateRange<D>>>();
 
   /** Reference to the current month view component. */
-  @ViewChild(MatMonthView) monthView: MatMonthView<D>;
+  @ViewChild(NgxMatMonthView) monthView: NgxMatMonthView<D>;
 
   /** Reference to the current year view component. */
   @ViewChild(MatYearView) yearView: MatYearView<D>;
@@ -537,7 +537,7 @@ export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, On
   }
 
   /** Returns the component instance that corresponds to the current calendar view. */
-  private _getCurrentViewComponent(): MatMonthView<D> | MatYearView<D> | MatMultiYearView<D> {
+  private _getCurrentViewComponent(): NgxMatMonthView<D> | MatYearView<D> | MatMultiYearView<D> {
     // The return type is explicitly written as a union to ensure that the Closure compiler does
     // not optimize calls to _init(). Without the explicit return type, TypeScript narrows it to
     // only the first component type. See https://github.com/angular/components/issues/22996.
