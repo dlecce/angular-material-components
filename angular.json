@@ -33,6 +33,16 @@
               "zone.js/testing"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/datetime-picker/**/*.ts",
+              "projects/datetime-picker/**/*.html"
+            ],
+            "eslintConfig": "projects/datetime-picker/eslint.config.js"
+          }
         }
       }
     },
