@@ -54,12 +54,12 @@ export type MatCalendarView = 'month' | 'year' | 'multi-year';
 @Component({
   selector: 'ngx-mat-calendar-header',
   templateUrl: 'calendar-header.html',
-  exportAs: 'matCalendarHeader',
+  exportAs: 'ngxMatCalendarHeader',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButton, MatIconButton],
 })
-export class MatCalendarHeader<D> {
+export class NgxMatCalendarHeader<D> {
   private _intl = inject(MatDatepickerIntl);
   calendar = inject<MatCalendar<D>>(MatCalendar);
   private _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
@@ -420,7 +420,7 @@ export class MatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDes
   }
 
   ngAfterContentInit() {
-    this._calendarHeaderPortal = new ComponentPortal(this.headerComponent || MatCalendarHeader);
+    this._calendarHeaderPortal = new ComponentPortal(this.headerComponent || NgxMatCalendarHeader);
     this.activeDate = this.startAt || this._dateAdapter.today();
 
     // Assign to the private property since we don't want to move focus on init.
