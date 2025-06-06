@@ -42,3 +42,4 @@ export * from './date-selection-model';
 export {NgxMatStartDate, NgxMatEndDate} from './date-range-input-parts';
 export {NgxMatMultiYearView, yearsPerPage, yearsPerRow} from './multi-year-view';
 export * from './datepicker-actions';
+export * from './timepicker.component';

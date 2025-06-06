@@ -27,6 +27,29 @@
     (_userSelection)="_handleUserSelection($event)"
     (_userDragDrop)="_handleUserDragDrop($event)"></ngx-mat-calendar>
 
+  @if (isViewMonth) {
+    @if (!datepicker.hideTime) {
+      <div
+        class="time-container"
+        [class.disable-seconds]="!datepicker._showSeconds"
+      >
+        <ngx-mat-timepicker
+          [showSpinners]="datepicker._showSpinners"
+          [showSeconds]="datepicker._showSeconds"
+          [disabled]="datepicker._disabled || !_modelTime"
+          [stepHour]="datepicker._stepHour"
+          [stepMinute]="datepicker._stepMinute"
+          [stepSecond]="datepicker._stepSecond"
+          [(ngModel)]="_modelTime"
+          [color]="datepicker._color"
+          [enableMeridian]="datepicker._enableMeridian"
+          [disableMinute]="datepicker._disableMinute"
+          (ngModelChange)="onTimeChanged($event)"
+        />
+      </div>
+    }
+  }
+
   <ng-template [cdkPortalOutlet]="_actionsPortal"></ng-template>
 
   <!-- Invisible close button for screen reader users. -->
