@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:datetime-picker": "ng build datetime-picker",
+    "build:datetime-picker:watch": "ng build datetime-picker --watch",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
