@@ -13,7 +13,7 @@ import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {CdkScrollableModule} from '@angular/cdk/scrolling';
 import {MatCommonModule} from '@angular/material/core';
-import {MatCalendar, NgxMatCalendarHeader} from './calendar';
+import {NgxMatCalendar, NgxMatCalendarHeader} from './calendar';
 import {NgxMatCalendarBody} from './calendar-body';
 import {MatDatepicker} from './datepicker';
 import {
@@ -38,7 +38,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     A11yModule,
     PortalModule,
     MatCommonModule,
-    MatCalendar,
+    NgxMatCalendar,
     NgxMatCalendarBody,
     MatDatepicker,
     MatDatepickerContent,
@@ -59,7 +59,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
   ],
   exports: [
     CdkScrollableModule,
-    MatCalendar,
+    NgxMatCalendar,
     NgxMatCalendarBody,
     MatDatepicker,
     MatDatepickerContent,

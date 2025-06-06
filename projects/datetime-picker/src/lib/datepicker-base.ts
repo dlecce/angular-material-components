@@ -60,7 +60,7 @@ import {MatButton} from '@angular/material/button';
 import {DateAdapter, ThemePalette} from '@angular/material/core';
 import {merge, Observable, Subject, Subscription} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
-import {MatCalendar, MatCalendarView} from './calendar';
+import {NgxMatCalendar, MatCalendarView} from './calendar';
 import {MatCalendarCellClassFunction, MatCalendarUserEvent} from './calendar-body';
 import {
   MAT_DATE_RANGE_SELECTION_STRATEGY,
@@ -134,7 +134,7 @@ export const MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER = {
   exportAs: 'matDatepickerContent',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CdkTrapFocus, MatCalendar, CdkPortalOutlet, MatButton],
+  imports: [CdkTrapFocus, NgxMatCalendar, CdkPortalOutlet, MatButton],
 })
 export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
   implements AfterViewInit, OnDestroy
@@ -157,7 +157,7 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
   private _animationFallback: ReturnType<typeof setTimeout> | undefined;
 
   /** Reference to the internal calendar component. */
-  @ViewChild(MatCalendar) _calendar: MatCalendar<D>;
+  @ViewChild(NgxMatCalendar) _calendar: NgxMatCalendar<D>;
 
   /**
    * Theme color of the internal calendar. This API is supported in M2 themes

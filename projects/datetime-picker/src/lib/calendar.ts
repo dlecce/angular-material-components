@@ -61,7 +61,7 @@ export type MatCalendarView = 'month' | 'year' | 'multi-year';
 })
 export class NgxMatCalendarHeader<D> {
   private _intl = inject(MatDatepickerIntl);
-  calendar = inject<MatCalendar<D>>(MatCalendar);
+  calendar = inject<NgxMatCalendar<D>>(NgxMatCalendar);
   private _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
   private _dateFormats = inject<MatDateFormats>(MAT_DATE_FORMATS, {optional: true})!;
 
@@ -233,13 +233,13 @@ export class NgxMatCalendarHeader<D> {
   host: {
     'class': 'mat-calendar',
   },
-  exportAs: 'matCalendar',
+  exportAs: 'ngxMatCalendar',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER],
   imports: [CdkPortalOutlet, CdkMonitorFocus, MatMonthView, MatYearView, MatMultiYearView],
 })
-export class MatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
+export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
   private _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
   private _dateFormats = inject<MatDateFormats>(MAT_DATE_FORMATS, {optional: true});
   private _changeDetectorRef = inject(ChangeDetectorRef);
