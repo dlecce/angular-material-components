@@ -51,12 +51,12 @@ export class MatDatepickerToggleIcon {}
     // it so that the input doesn't get focused automatically by the form field (See #21836).
     '(click)': '_open($event)',
   },
-  exportAs: 'matDatepickerToggle',
+  exportAs: 'ngxMatDatepickerToggle',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconButton],
 })
-export class MatDatepickerToggle<D> implements AfterContentInit, OnChanges, OnDestroy {
+export class NgxMatDatepickerToggle<D> implements AfterContentInit, OnChanges, OnDestroy {
   _intl = inject(MatDatepickerIntl);
   private _changeDetectorRef = inject(ChangeDetectorRef);
   private _stateChanges = Subscription.EMPTY;

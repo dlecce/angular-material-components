@@ -22,7 +22,7 @@ import {
 } from './datepicker-base';
 import {MatDatepickerInput} from './datepicker-input';
 import {MatDatepickerIntl} from './datepicker-intl';
-import {MatDatepickerToggle, MatDatepickerToggleIcon} from './datepicker-toggle';
+import {NgxMatDatepickerToggle, MatDatepickerToggleIcon} from './datepicker-toggle';
 import {MatMonthView} from './month-view';
 import {MatMultiYearView} from './multi-year-view';
 import {MatYearView} from './year-view';
@@ -43,7 +43,7 @@ import {NgxMatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from '
     MatDatepicker,
     NgxMatDatepickerContent,
     MatDatepickerInput,
-    MatDatepickerToggle,
+    NgxMatDatepickerToggle,
     MatDatepickerToggleIcon,
     MatMonthView,
     MatYearView,
@@ -64,7 +64,7 @@ import {NgxMatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from '
     MatDatepicker,
     NgxMatDatepickerContent,
     MatDatepickerInput,
-    MatDatepickerToggle,
+    NgxMatDatepickerToggle,
     MatDatepickerToggleIcon,
     MatMonthView,
     MatYearView,
