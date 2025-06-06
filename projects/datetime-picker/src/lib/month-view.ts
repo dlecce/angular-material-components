@@ -38,7 +38,7 @@ import {
 import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from '@angular/material/core';
 import {Directionality} from '@angular/cdk/bidi';
 import {
-  MatCalendarBody,
+  NgxMatCalendarBody,
   MatCalendarCell,
   MatCalendarUserEvent,
   MatCalendarCellClassFunction,
@@ -67,7 +67,7 @@ let uniqueIdCounter = 0;
   exportAs: 'matMonthView',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatCalendarBody],
+  imports: [NgxMatCalendarBody],
 })
 export class MatMonthView<D> implements AfterContentInit, OnChanges, OnDestroy {
   readonly _changeDetectorRef = inject(ChangeDetectorRef);
@@ -180,7 +180,7 @@ export class MatMonthView<D> implements AfterContentInit, OnChanges, OnDestroy {
   @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
   /** The body of calendar table */
-  @ViewChild(MatCalendarBody) _matCalendarBody: MatCalendarBody;
+  @ViewChild(NgxMatCalendarBody) _matCalendarBody: NgxMatCalendarBody;
 
   /** The label for this month (e.g. "January 2017"). */
   _monthLabel: string;

@@ -34,7 +34,7 @@ import {
 import {DateAdapter} from '@angular/material/core';
 import {Directionality} from '@angular/cdk/bidi';
 import {
-  MatCalendarBody,
+  NgxMatCalendarBody,
   MatCalendarCell,
   MatCalendarUserEvent,
   MatCalendarCellClassFunction,
@@ -58,7 +58,7 @@ export const yearsPerRow = 4;
   exportAs: 'matMultiYearView',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatCalendarBody],
+  imports: [NgxMatCalendarBody],
 })
 export class MatMultiYearView<D> implements AfterContentInit, OnDestroy {
   private _changeDetectorRef = inject(ChangeDetectorRef);
@@ -147,7 +147,7 @@ export class MatMultiYearView<D> implements AfterContentInit, OnDestroy {
   @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
   /** The body of calendar table */
-  @ViewChild(MatCalendarBody) _matCalendarBody: MatCalendarBody;
+  @ViewChild(NgxMatCalendarBody) _matCalendarBody: NgxMatCalendarBody;
 
   /** Grid of calendar cells representing the currently displayed years. */
   _years: MatCalendarCell[][];

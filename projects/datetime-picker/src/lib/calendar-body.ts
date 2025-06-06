@@ -97,7 +97,7 @@ const passiveEventOptions = {passive: true};
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass],
 })
-export class MatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterViewChecked {
+export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterViewChecked {
   private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private _ngZone = inject(NgZone);
   private _platform = inject(Platform);

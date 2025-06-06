@@ -34,7 +34,7 @@ import {
 import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from '@angular/material/core';
 import {Directionality} from '@angular/cdk/bidi';
 import {
-  MatCalendarBody,
+  NgxMatCalendarBody,
   MatCalendarCell,
   MatCalendarUserEvent,
   MatCalendarCellClassFunction,
@@ -54,7 +54,7 @@ import {DateRange} from './date-selection-model';
   exportAs: 'matYearView',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatCalendarBody],
+  imports: [NgxMatCalendarBody],
 })
 export class MatYearView<D> implements AfterContentInit, OnDestroy {
   readonly _changeDetectorRef = inject(ChangeDetectorRef);
@@ -136,7 +136,7 @@ export class MatYearView<D> implements AfterContentInit, OnDestroy {
   @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
   /** The body of calendar table */
-  @ViewChild(MatCalendarBody) _matCalendarBody: MatCalendarBody;
+  @ViewChild(NgxMatCalendarBody) _matCalendarBody: NgxMatCalendarBody;
 
   /** Grid of calendar cells representing the months of the year. */
   _months: MatCalendarCell[][];
