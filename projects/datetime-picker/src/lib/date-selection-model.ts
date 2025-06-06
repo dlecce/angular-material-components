@@ -7,7 +7,7 @@
  */
 
 import {FactoryProvider, Injectable, Optional, SkipSelf, OnDestroy} from '@angular/core';
-import {DateAdapter} from '../core';
+import {DateAdapter} from '@angular/material/core';
 import {Observable, Subject} from 'rxjs';
 
 /** A class representing a range of dates. */
