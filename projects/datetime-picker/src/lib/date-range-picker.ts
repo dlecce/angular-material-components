@@ -29,16 +29,16 @@ export interface MatDateRangePickerInput<D> extends MatDatepickerControl<D> {
 @Component({
   selector: 'ngx-mat-date-range-picker',
   template: '',
-  exportAs: 'matDateRangePicker',
+  exportAs: 'ngxMatDateRangePicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   providers: [
     MAT_RANGE_DATE_SELECTION_MODEL_PROVIDER,
     MAT_CALENDAR_RANGE_STRATEGY_PROVIDER,
-    {provide: MatDatepickerBase, useExisting: MatDateRangePicker},
+    {provide: MatDatepickerBase, useExisting: NgxMatDateRangePicker},
   ],
 })
-export class MatDateRangePicker<D> extends MatDatepickerBase<
+export class NgxMatDateRangePicker<D> extends MatDatepickerBase<
   MatDateRangePickerInput<D>,
   DateRange<D>,
   D

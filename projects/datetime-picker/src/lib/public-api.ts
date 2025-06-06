@@ -37,7 +37,7 @@ export * from './datepicker-toggle';
 export * from './month-view';
 export * from './year-view';
 export * from './date-range-input';
-export {MatDateRangePicker} from './date-range-picker';
+export {NgxMatDateRangePicker as MatDateRangePicker} from './date-range-picker';
 export * from './date-selection-model';
 export {MatStartDate, MatEndDate} from './date-range-input-parts';
 export {MatMultiYearView, yearsPerPage, yearsPerRow} from './multi-year-view';

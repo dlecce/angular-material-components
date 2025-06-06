@@ -28,7 +28,7 @@ import {MatMultiYearView} from './multi-year-view';
 import {MatYearView} from './year-view';
 import {NgxMatDateRangeInput} from './date-range-input';
 import {MatStartDate, MatEndDate} from './date-range-input-parts';
-import {MatDateRangePicker} from './date-range-picker';
+import {NgxMatDateRangePicker} from './date-range-picker';
 import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './datepicker-actions';
 
 @NgModule({
@@ -52,7 +52,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     NgxMatDateRangeInput,
     MatStartDate,
     MatEndDate,
-    MatDateRangePicker,
+    NgxMatDateRangePicker,
     MatDatepickerActions,
     MatDatepickerCancel,
     MatDatepickerApply,
@@ -73,7 +73,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     NgxMatDateRangeInput,
     MatStartDate,
     MatEndDate,
-    MatDateRangePicker,
+    NgxMatDateRangePicker,
     MatDatepickerActions,
     MatDatepickerCancel,
     MatDatepickerApply,
