@@ -131,12 +131,12 @@ export const MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER = {
     '[class.mat-datepicker-content-touch]': 'datepicker.touchUi',
     '[class.mat-datepicker-content-animations-enabled]': '!_animationsDisabled',
   },
-  exportAs: 'matDatepickerContent',
+  exportAs: 'ngxMatDatepickerContent',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CdkTrapFocus, NgxMatCalendar, CdkPortalOutlet, MatButton],
 })
-export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
+export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
   implements AfterViewInit, OnDestroy
 {
   protected _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
@@ -548,7 +548,7 @@ export abstract class MatDatepickerBase<
   private _overlayRef: OverlayRef | null;
 
   /** Reference to the component instance rendered in the overlay. */
-  private _componentRef: ComponentRef<MatDatepickerContent<S, D>> | null;
+  private _componentRef: ComponentRef<NgxMatDatepickerContent<S, D>> | null;
 
   /** The element that was focused before the datepicker was opened. */
   private _focusedElementBeforeOpen: HTMLElement | null = null;
@@ -744,7 +744,7 @@ export abstract class MatDatepickerBase<
   }
 
   /** Forwards relevant values from the datepicker to the datepicker content inside the overlay. */
-  protected _forwardContentValues(instance: MatDatepickerContent<S, D>) {
+  protected _forwardContentValues(instance: NgxMatDatepickerContent<S, D>) {
     instance.datepicker = this;
     instance.color = this.color;
     instance._dialogLabelId = this.datepickerInput.getOverlayLabelId();
@@ -756,8 +756,8 @@ export abstract class MatDatepickerBase<
     this._destroyOverlay();
 
     const isDialog = this.touchUi;
-    const portal = new ComponentPortal<MatDatepickerContent<S, D>>(
-      MatDatepickerContent,
+    const portal = new ComponentPortal<NgxMatDatepickerContent<S, D>>(
+      NgxMatDatepickerContent,
       this._viewContainerRef,
     );
     const overlayRef = (this._overlayRef = this._overlay.create(

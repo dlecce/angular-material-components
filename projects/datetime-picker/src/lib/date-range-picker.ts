@@ -7,7 +7,7 @@
  */
 
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {MatDatepickerBase, MatDatepickerContent, MatDatepickerControl} from './datepicker-base';
+import {MatDatepickerBase, NgxMatDatepickerContent, MatDatepickerControl} from './datepicker-base';
 import {MAT_RANGE_DATE_SELECTION_MODEL_PROVIDER, DateRange} from './date-selection-model';
 import {MAT_CALENDAR_RANGE_STRATEGY_PROVIDER} from './date-range-selection-strategy';
 
@@ -43,7 +43,7 @@ export class NgxMatDateRangePicker<D> extends MatDatepickerBase<
   DateRange<D>,
   D
 > {
-  protected override _forwardContentValues(instance: MatDatepickerContent<DateRange<D>, D>) {
+  protected override _forwardContentValues(instance: NgxMatDatepickerContent<DateRange<D>, D>) {
     super._forwardContentValues(instance);
 
     const input = this.datepickerInput;

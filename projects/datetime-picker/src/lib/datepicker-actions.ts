@@ -57,7 +57,7 @@ export class MatDatepickerCancel {
  * to the bottom of a datepicker or date range picker.
  */
 @Component({
-  selector: 'ngx-mat-datepicker-actions, mat-date-range-picker-actions',
+  selector: 'ngx-mat-datepicker-actions, ngx-mat-date-range-picker-actions',
   styleUrl: 'datepicker-actions.scss',
   template: `
     <ng-template>
@@ -69,7 +69,7 @@ export class MatDatepickerCancel {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class MatDatepickerActions implements AfterViewInit, OnDestroy {
+export class NgxMatDatepickerActions implements AfterViewInit, OnDestroy {
   private _datepicker =
     inject<MatDatepickerBase<MatDatepickerControl<any>, unknown>>(MatDatepickerBase);
   private _viewContainerRef = inject(ViewContainerRef);

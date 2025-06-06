@@ -17,7 +17,7 @@ import {NgxMatCalendar, NgxMatCalendarHeader} from './calendar';
 import {NgxMatCalendarBody} from './calendar-body';
 import {MatDatepicker} from './datepicker';
 import {
-  MatDatepickerContent,
+  NgxMatDatepickerContent,
   MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER,
 } from './datepicker-base';
 import {MatDatepickerInput} from './datepicker-input';
@@ -29,7 +29,7 @@ import {MatYearView} from './year-view';
 import {NgxMatDateRangeInput} from './date-range-input';
 import {MatStartDate, MatEndDate} from './date-range-input-parts';
 import {NgxMatDateRangePicker} from './date-range-picker';
-import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './datepicker-actions';
+import {NgxMatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './datepicker-actions';
 
 @NgModule({
   imports: [
@@ -41,7 +41,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     NgxMatCalendar,
     NgxMatCalendarBody,
     MatDatepicker,
-    MatDatepickerContent,
+    NgxMatDatepickerContent,
     MatDatepickerInput,
     MatDatepickerToggle,
     MatDatepickerToggleIcon,
@@ -53,7 +53,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     MatStartDate,
     MatEndDate,
     NgxMatDateRangePicker,
-    MatDatepickerActions,
+    NgxMatDatepickerActions,
     MatDatepickerCancel,
     MatDatepickerApply,
   ],
@@ -62,7 +62,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     NgxMatCalendar,
     NgxMatCalendarBody,
     MatDatepicker,
-    MatDatepickerContent,
+    NgxMatDatepickerContent,
     MatDatepickerInput,
     MatDatepickerToggle,
     MatDatepickerToggleIcon,
@@ -74,7 +74,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     MatStartDate,
     MatEndDate,
     NgxMatDateRangePicker,
-    MatDatepickerActions,
+    NgxMatDatepickerActions,
     MatDatepickerCancel,
     MatDatepickerApply,
   ],
