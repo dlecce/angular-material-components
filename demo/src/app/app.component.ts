@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { NgxMatDatepickerInput, NgxMatDatepickerToggle, NgxMatDatetimePicker } from 'datetime-picker';
+import { NgxMatDatepickerInput, NgxMatDatepickerToggle, NgxMatDatetimePicker, NgxMatDatepickerActions, NgxMatDatepickerApply } from 'datetime-picker';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +15,14 @@ import { NgxMatDatepickerInput, NgxMatDatepickerToggle, NgxMatDatetimePicker } f
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
+    MatButtonModule,
     NgxMatDatetimePicker,
     NgxMatDatepickerToggle,
-    NgxMatDatepickerInput
-  ],
+    NgxMatDatepickerInput,
+    NgxMatDatepickerActions,
+    NgxMatDatepickerApply
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

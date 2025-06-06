@@ -31,7 +31,6 @@ export class NgxMatDatepickerApply {
     inject<NgxMatDatepickerBase<NgxMatDatepickerControl<any>, unknown>>(NgxMatDatepickerBase);
 
   constructor(...args: unknown[]);
-
   constructor() {}
 
   _applySelection() {

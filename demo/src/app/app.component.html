@@ -4,5 +4,11 @@
   <mat-label>From</mat-label>
   <input matInput [ngxMatDatetimePicker]="picker" [formControl]="dateControl" />
   <ngx-mat-datepicker-toggle matSuffix [for]="picker" />
-  <ngx-mat-datetime-picker #picker />
+  <ngx-mat-datetime-picker #picker>
+    <ngx-mat-datepicker-actions>
+      <button mat-raised-button ngxMatDatepickerApply>
+        <mat-icon>done</mat-icon>
+      </button>
+    </ngx-mat-datepicker-actions>
+  </ngx-mat-datetime-picker>
 </mat-form-field>
