@@ -15,7 +15,7 @@ import {CdkScrollableModule} from '@angular/cdk/scrolling';
 import {MatCommonModule} from '@angular/material/core';
 import {NgxMatCalendar, NgxMatCalendarHeader} from './calendar';
 import {NgxMatCalendarBody} from './calendar-body';
-import {MatDatepicker} from './datepicker';
+import {NgxMatDatetimepicker} from './datepicker';
 import {
   NgxMatDatepickerContent,
   MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER,
@@ -40,7 +40,7 @@ import {NgxMatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from '
     MatCommonModule,
     NgxMatCalendar,
     NgxMatCalendarBody,
-    MatDatepicker,
+    NgxMatDatetimepicker,
     NgxMatDatepickerContent,
     MatDatepickerInput,
     NgxMatDatepickerToggle,
@@ -61,7 +61,7 @@ import {NgxMatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from '
     CdkScrollableModule,
     NgxMatCalendar,
     NgxMatCalendarBody,
-    MatDatepicker,
+    NgxMatDatetimepicker,
     NgxMatDatepickerContent,
     MatDatepickerInput,
     NgxMatDatepickerToggle,
