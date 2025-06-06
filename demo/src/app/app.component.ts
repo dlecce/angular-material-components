@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DatetimePickerComponent } from "../../../projects/datetime-picker/src/lib/datetime-picker.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [DatetimePickerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

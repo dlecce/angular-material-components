@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
     <p>
-      datetime-picker works!
+      datetime-picker works! Yeah
     </p>
   `,
   styles: ``
