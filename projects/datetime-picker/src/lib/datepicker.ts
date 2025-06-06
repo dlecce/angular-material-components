@@ -22,7 +22,7 @@ import {MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER} from './date-selection-model';
   encapsulation: ViewEncapsulation.None,
   providers: [
     MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER,
-    {provide: MatDatepickerBase, useExisting: NgxMatDatetimepicker},
+    {provide: MatDatepickerBase, useExisting: NgxMatDatetimePicker},
   ],
 })
-export class NgxMatDatetimepicker<D> extends MatDatepickerBase<MatDatepickerControl<D>, D | null, D> {}
+export class NgxMatDatetimePicker<D> extends MatDatepickerBase<MatDatepickerControl<D>, D | null, D> {}

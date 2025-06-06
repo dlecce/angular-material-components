@@ -32,7 +32,7 @@ export const MAT_DATEPICKER_VALIDATORS: any = {
 
 /** Directive used to connect an input to a MatDatepicker. */
 @Directive({
-  selector: 'input[ngxMatDatepicker]',
+  selector: 'input[ngxMatDatetimePicker]',
   providers: [
     MAT_DATEPICKER_VALUE_ACCESSOR,
     MAT_DATEPICKER_VALIDATORS,
@@ -53,7 +53,7 @@ export const MAT_DATEPICKER_VALIDATORS: any = {
     '(blur)': '_onBlur()',
     '(keydown)': '_onKeydown($event)',
   },
-  exportAs: 'matDatepickerInput',
+  exportAs: 'ngxMatDatepickerInput',
 })
 export class MatDatepickerInput<D>
   extends MatDatepickerInputBase<D | null, D>

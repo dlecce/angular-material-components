@@ -51,12 +51,12 @@ import {DateRange} from './date-selection-model';
 @Component({
   selector: 'ngx-mat-year-view',
   templateUrl: 'year-view.html',
-  exportAs: 'matYearView',
+  exportAs: 'ngxMatYearView',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgxMatCalendarBody],
 })
-export class MatYearView<D> implements AfterContentInit, OnDestroy {
+export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
   readonly _changeDetectorRef = inject(ChangeDetectorRef);
   private _dateFormats = inject<MatDateFormats>(MAT_DATE_FORMATS, {optional: true})!;
   _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;

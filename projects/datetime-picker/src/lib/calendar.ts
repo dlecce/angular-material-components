@@ -37,7 +37,7 @@ import {
   NgxMatMultiYearView,
   yearsPerPage,
 } from './multi-year-view';
-import {MatYearView} from './year-view';
+import {NgxMatYearView} from './year-view';
 import {MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER, DateRange} from './date-selection-model';
 import {MatIconButton, MatButton} from '@angular/material/button';
 import {_IdGenerator, CdkMonitorFocus} from '@angular/cdk/a11y';
@@ -237,7 +237,7 @@ export class NgxMatCalendarHeader<D> {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER],
-  imports: [CdkPortalOutlet, CdkMonitorFocus, NgxMatMonthView, MatYearView, NgxMatMultiYearView],
+  imports: [CdkPortalOutlet, CdkMonitorFocus, NgxMatMonthView, NgxMatYearView, NgxMatMultiYearView],
 })
 export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
   private _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
@@ -358,7 +358,7 @@ export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, On
   @ViewChild(NgxMatMonthView) monthView: NgxMatMonthView<D>;
 
   /** Reference to the current year view component. */
-  @ViewChild(MatYearView) yearView: MatYearView<D>;
+  @ViewChild(NgxMatYearView) yearView: NgxMatYearView<D>;
 
   /** Reference to the current multi-year view component. */
   @ViewChild(NgxMatMultiYearView) multiYearView: NgxMatMultiYearView<D>;
@@ -537,7 +537,7 @@ export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, On
   }
 
   /** Returns the component instance that corresponds to the current calendar view. */
-  private _getCurrentViewComponent(): NgxMatMonthView<D> | MatYearView<D> | NgxMatMultiYearView<D> {
+  private _getCurrentViewComponent(): NgxMatMonthView<D> | NgxMatYearView<D> | NgxMatMultiYearView<D> {
     // The return type is explicitly written as a union to ensure that the Closure compiler does
     // not optimize calls to _init(). Without the explicit return type, TypeScript narrows it to
     // only the first component type. See https://github.com/angular/components/issues/22996.

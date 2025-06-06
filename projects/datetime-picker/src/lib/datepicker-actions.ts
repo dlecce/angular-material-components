@@ -26,7 +26,7 @@ import {MatDatepickerBase, MatDatepickerControl} from './datepicker-base';
   selector: '[ngxMatDatepickerApply], [ngxMatDateRangePickerApply]',
   host: {'(click)': '_applySelection()'},
 })
-export class MatDatepickerApply {
+export class NgxMatDatepickerApply {
   private _datepicker =
     inject<MatDatepickerBase<MatDatepickerControl<any>, unknown>>(MatDatepickerBase);
 
@@ -45,7 +45,7 @@ export class MatDatepickerApply {
   selector: '[ngxMatDatepickerCancel], [ngxMatDateRangePickerCancel]',
   host: {'(click)': '_datepicker.close()'},
 })
-export class MatDatepickerCancel {
+export class NgxMatDatepickerCancel {
   _datepicker = inject<MatDatepickerBase<MatDatepickerControl<any>, unknown>>(MatDatepickerBase);
 
   constructor(...args: unknown[]);

@@ -92,7 +92,7 @@ const passiveEventOptions = {passive: true};
   host: {
     'class': 'mat-calendar-body',
   },
-  exportAs: 'matCalendarBody',
+  exportAs: 'ngxMatCalendarBody',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass],
