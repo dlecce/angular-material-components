@@ -25,8 +25,8 @@ import {
 } from '@angular/core';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {merge, Observable, of as observableOf, Subscription} from 'rxjs';
-import {MatDatepickerIntl} from './datepicker-intl';
-import {MatDatepickerControl, MatDatepickerPanel} from './datepicker-base';
+import {NgxMatDatepickerIntl} from './datepicker-intl';
+import {NgxMatDatepickerControl, NgxMatDatepickerPanel} from './datepicker-base';
 
 /** Can be used to override the icon of a `matDatepickerToggle`. */
 @Directive({
@@ -57,12 +57,12 @@ export class NgxMatDatepickerToggleIcon {}
   imports: [MatIconButton],
 })
 export class NgxMatDatepickerToggle<D> implements AfterContentInit, OnChanges, OnDestroy {
-  _intl = inject(MatDatepickerIntl);
+  _intl = inject(NgxMatDatepickerIntl);
   private _changeDetectorRef = inject(ChangeDetectorRef);
   private _stateChanges = Subscription.EMPTY;
 
   /** Datepicker instance that the button will toggle. */
-  @Input('for') datepicker: MatDatepickerPanel<MatDatepickerControl<any>, D>;
+  @Input('for') datepicker: NgxMatDatepickerPanel<NgxMatDatepickerControl<any>, D>;
 
   /** Tabindex for the toggle. */
   @Input() tabIndex: number | null;

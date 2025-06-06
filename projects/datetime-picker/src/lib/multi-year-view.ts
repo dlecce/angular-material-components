@@ -35,9 +35,9 @@ import {DateAdapter} from '@angular/material/core';
 import {Directionality} from '@angular/cdk/bidi';
 import {
   NgxMatCalendarBody,
-  MatCalendarCell,
-  MatCalendarUserEvent,
-  MatCalendarCellClassFunction,
+  NgxMatCalendarCell,
+  NgxMatCalendarUserEvent,
+  NgxMatCalendarCellClassFunction,
 } from './calendar-body';
 import {createMissingDateImplError} from './datepicker-errors';
 import {Subscription} from 'rxjs';
@@ -135,7 +135,7 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
   @Input() dateFilter: (date: D) => boolean;
 
   /** Function that can be used to add custom CSS classes to date cells. */
-  @Input() dateClass: MatCalendarCellClassFunction<D>;
+  @Input() dateClass: NgxMatCalendarCellClassFunction<D>;
 
   /** Emits when a new year is selected. */
   @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
@@ -150,7 +150,7 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
   @ViewChild(NgxMatCalendarBody) _matCalendarBody: NgxMatCalendarBody;
 
   /** Grid of calendar cells representing the currently displayed years. */
-  _years: MatCalendarCell[][];
+  _years: NgxMatCalendarCell[][];
 
   /** The year that today falls on. */
   _todayYear: number;
@@ -204,7 +204,7 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
   }
 
   /** Handles when a new year is selected. */
-  _yearSelected(event: MatCalendarUserEvent<number>) {
+  _yearSelected(event: NgxMatCalendarUserEvent<number>) {
     const year = event.value;
     const selectedYear = this._dateAdapter.createDate(year, 0, 1);
     const selectedDate = this._getDateFromYear(year);
@@ -223,7 +223,7 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
    * parent's value asynchronously via the `activeDateChange` event. The child component receives an
    * updated value asynchronously via the `activeCell` Input.
    */
-  _updateActiveDate(event: MatCalendarUserEvent<number>) {
+  _updateActiveDate(event: NgxMatCalendarUserEvent<number>) {
     const year = event.value;
     const oldActiveDate = this._activeDate;
 
@@ -346,7 +346,7 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
     const yearName = this._dateAdapter.getYearName(date);
     const cellClasses = this.dateClass ? this.dateClass(date, 'multi-year') : undefined;
 
-    return new MatCalendarCell(year, yearName, yearName, this._shouldEnableYear(year), cellClasses);
+    return new NgxMatCalendarCell(year, yearName, yearName, this._shouldEnableYear(year), cellClasses);
   }
 
   /** Whether the given year is enabled. */

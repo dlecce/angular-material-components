@@ -47,7 +47,7 @@ export class MatDatepickerInputEvent<D, S = unknown> {
 
   constructor(
     /** Reference to the datepicker input component that emitted the event. */
-    public target: MatDatepickerInputBase<S, D>,
+    public target: NgxMatDatepickerInputBase<S, D>,
     /** Reference to the native input element associated with the datepicker input. */
     public targetElement: HTMLElement,
   ) {
@@ -78,7 +78,7 @@ export interface _MatFormFieldPartial {
 
 /** Base class for datepicker inputs. */
 @Directive()
-export abstract class MatDatepickerInputBase<S, D = ExtractDateTypeFromSelection<S>>
+export abstract class NgxMatDatepickerInputBase<S, D = ExtractDateTypeFromSelection<S>>
   implements ControlValueAccessor, AfterViewInit, OnChanges, OnDestroy, Validator
 {
   protected _elementRef = inject<ElementRef<HTMLInputElement>>(ElementRef);

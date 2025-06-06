@@ -19,7 +19,7 @@ import {
   inject,
 } from '@angular/core';
 import {TemplatePortal} from '@angular/cdk/portal';
-import {MatDatepickerBase, MatDatepickerControl} from './datepicker-base';
+import {NgxMatDatepickerBase, NgxMatDatepickerControl} from './datepicker-base';
 
 /** Button that will close the datepicker and assign the current selection to the data model. */
 @Directive({
@@ -28,7 +28,7 @@ import {MatDatepickerBase, MatDatepickerControl} from './datepicker-base';
 })
 export class NgxMatDatepickerApply {
   private _datepicker =
-    inject<MatDatepickerBase<MatDatepickerControl<any>, unknown>>(MatDatepickerBase);
+    inject<NgxMatDatepickerBase<NgxMatDatepickerControl<any>, unknown>>(NgxMatDatepickerBase);
 
   constructor(...args: unknown[]);
 
@@ -46,7 +46,7 @@ export class NgxMatDatepickerApply {
   host: {'(click)': '_datepicker.close()'},
 })
 export class NgxMatDatepickerCancel {
-  _datepicker = inject<MatDatepickerBase<MatDatepickerControl<any>, unknown>>(MatDatepickerBase);
+  _datepicker = inject<NgxMatDatepickerBase<NgxMatDatepickerControl<any>, unknown>>(NgxMatDatepickerBase);
 
   constructor(...args: unknown[]);
   constructor() {}
@@ -71,7 +71,7 @@ export class NgxMatDatepickerCancel {
 })
 export class NgxMatDatepickerActions implements AfterViewInit, OnDestroy {
   private _datepicker =
-    inject<MatDatepickerBase<MatDatepickerControl<any>, unknown>>(MatDatepickerBase);
+    inject<NgxMatDatepickerBase<NgxMatDatepickerControl<any>, unknown>>(NgxMatDatepickerBase);
   private _viewContainerRef = inject(ViewContainerRef);
 
   @ViewChild(TemplateRef) _template: TemplateRef<unknown>;

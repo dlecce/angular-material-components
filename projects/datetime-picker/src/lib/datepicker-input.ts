@@ -13,20 +13,20 @@ import {MAT_FORM_FIELD} from '@angular/material/form-field';
 import {MAT_INPUT_VALUE_ACCESSOR} from '@angular/material/input';
 import {Subscription} from 'rxjs';
 import {DateSelectionModelChange} from './date-selection-model';
-import {MatDatepickerControl, MatDatepickerPanel} from './datepicker-base';
-import {_MatFormFieldPartial, DateFilterFn, MatDatepickerInputBase} from './datepicker-input-base';
+import {NgxMatDatepickerControl, NgxMatDatepickerPanel} from './datepicker-base';
+import {_MatFormFieldPartial, DateFilterFn, NgxMatDatepickerInputBase} from './datepicker-input-base';
 
 /** @docs-private */
-export const MAT_DATEPICKER_VALUE_ACCESSOR: any = {
+export const NGX_MAT_DATEPICKER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => MatDatepickerInput),
+  useExisting: forwardRef(() => NgxMatDatepickerInput),
   multi: true,
 };
 
 /** @docs-private */
-export const MAT_DATEPICKER_VALIDATORS: any = {
+export const NGX_MAT_DATEPICKER_VALIDATORS: any = {
   provide: NG_VALIDATORS,
-  useExisting: forwardRef(() => MatDatepickerInput),
+  useExisting: forwardRef(() => NgxMatDatepickerInput),
   multi: true,
 };
 
@@ -34,9 +34,9 @@ export const MAT_DATEPICKER_VALIDATORS: any = {
 @Directive({
   selector: 'input[ngxMatDatetimePicker]',
   providers: [
-    MAT_DATEPICKER_VALUE_ACCESSOR,
-    MAT_DATEPICKER_VALIDATORS,
-    {provide: MAT_INPUT_VALUE_ACCESSOR, useExisting: MatDatepickerInput},
+    NGX_MAT_DATEPICKER_VALUE_ACCESSOR,
+    NGX_MAT_DATEPICKER_VALIDATORS,
+    {provide: MAT_INPUT_VALUE_ACCESSOR, useExisting: NgxMatDatepickerInput},
   ],
   host: {
     'class': 'mat-datepicker-input',
@@ -55,9 +55,9 @@ export const MAT_DATEPICKER_VALIDATORS: any = {
   },
   exportAs: 'ngxMatDatepickerInput',
 })
-export class MatDatepickerInput<D>
-  extends MatDatepickerInputBase<D | null, D>
-  implements MatDatepickerControl<D | null>, OnDestroy
+export class NgxMatDatepickerInput<D>
+  extends NgxMatDatepickerInputBase<D | null, D>
+  implements NgxMatDatepickerControl<D | null>, OnDestroy
 {
   private _formField = inject<_MatFormFieldPartial>(MAT_FORM_FIELD, {optional: true});
   private _closedSubscription = Subscription.EMPTY;
@@ -65,7 +65,7 @@ export class MatDatepickerInput<D>
 
   /** The datepicker that this input is associated with. */
   @Input()
-  set matDatepicker(datepicker: MatDatepickerPanel<MatDatepickerControl<D>, D | null, D>) {
+  set matDatepicker(datepicker: NgxMatDatepickerPanel<NgxMatDatepickerControl<D>, D | null, D>) {
     if (datepicker) {
       this._datepicker = datepicker;
       this._ariaOwns.set(datepicker.opened ? datepicker.id : null);
@@ -79,7 +79,7 @@ export class MatDatepickerInput<D>
       this._registerModel(datepicker.registerInput(this));
     }
   }
-  _datepicker: MatDatepickerPanel<MatDatepickerControl<D>, D | null, D>;
+  _datepicker: NgxMatDatepickerPanel<NgxMatDatepickerControl<D>, D | null, D>;
 
   /** The id of the panel owned by this input. */
   protected _ariaOwns = signal<string | null>(null);

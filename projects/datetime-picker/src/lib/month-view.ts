@@ -39,17 +39,17 @@ import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from '@angular/material/c
 import {Directionality} from '@angular/cdk/bidi';
 import {
   NgxMatCalendarBody,
-  MatCalendarCell,
-  MatCalendarUserEvent,
-  MatCalendarCellClassFunction,
+  NgxMatCalendarCell,
+  NgxMatCalendarUserEvent,
+  NgxMatCalendarCellClassFunction,
 } from './calendar-body';
 import {createMissingDateImplError} from './datepicker-errors';
 import {Subscription} from 'rxjs';
 import {startWith} from 'rxjs/operators';
 import {DateRange} from './date-selection-model';
 import {
-  MatDateRangeSelectionStrategy,
-  MAT_DATE_RANGE_SELECTION_STRATEGY,
+  NgxMatDateRangeSelectionStrategy,
+  NGX_MAT_DATE_RANGE_SELECTION_STRATEGY,
 } from './date-range-selection-strategy';
 import {_CdkPrivateStyleLoader, _VisuallyHiddenLoader} from '@angular/cdk/private';
 
@@ -74,8 +74,8 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
   private _dateFormats = inject<MatDateFormats>(MAT_DATE_FORMATS, {optional: true})!;
   _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
   private _dir = inject(Directionality, {optional: true});
-  private _rangeStrategy = inject<MatDateRangeSelectionStrategy<D>>(
-    MAT_DATE_RANGE_SELECTION_STRATEGY,
+  private _rangeStrategy = inject<NgxMatDateRangeSelectionStrategy<D>>(
+    NGX_MAT_DATE_RANGE_SELECTION_STRATEGY,
     {optional: true},
   );
 
@@ -143,7 +143,7 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
   @Input() dateFilter: (date: D) => boolean;
 
   /** Function that can be used to add custom CSS classes to dates. */
-  @Input() dateClass: MatCalendarCellClassFunction<D>;
+  @Input() dateClass: NgxMatCalendarCellClassFunction<D>;
 
   /** Start of the comparison range. */
   @Input() comparisonStart: D | null;
@@ -158,23 +158,23 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
   @Input() endDateAccessibleName: string | null;
 
   /** Origin of active drag, or null when dragging is not active. */
-  @Input() activeDrag: MatCalendarUserEvent<D> | null = null;
+  @Input() activeDrag: NgxMatCalendarUserEvent<D> | null = null;
 
   /** Emits when a new date is selected. */
   @Output() readonly selectedChange: EventEmitter<D | null> = new EventEmitter<D | null>();
 
   /** Emits when any date is selected. */
-  @Output() readonly _userSelection: EventEmitter<MatCalendarUserEvent<D | null>> =
-    new EventEmitter<MatCalendarUserEvent<D | null>>();
+  @Output() readonly _userSelection: EventEmitter<NgxMatCalendarUserEvent<D | null>> =
+    new EventEmitter<NgxMatCalendarUserEvent<D | null>>();
 
   /** Emits when the user initiates a date range drag via mouse or touch. */
-  @Output() readonly dragStarted = new EventEmitter<MatCalendarUserEvent<D>>();
+  @Output() readonly dragStarted = new EventEmitter<NgxMatCalendarUserEvent<D>>();
 
   /**
    * Emits when the user completes or cancels a date range drag.
    * Emits null when the drag was canceled or the newly selected date range if completed.
    */
-  @Output() readonly dragEnded = new EventEmitter<MatCalendarUserEvent<DateRange<D> | null>>();
+  @Output() readonly dragEnded = new EventEmitter<NgxMatCalendarUserEvent<DateRange<D> | null>>();
 
   /** Emits when any date is activated. */
   @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
@@ -186,7 +186,7 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
   _monthLabel: string;
 
   /** Grid of calendar cells representing the dates of the month. */
-  _weeks: MatCalendarCell[][];
+  _weeks: NgxMatCalendarCell[][];
 
   /** The number of blank cells in the first row before the 1st of the month. */
   _firstWeekOffset: number;
@@ -257,7 +257,7 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
   }
 
   /** Handles when a new date is selected. */
-  _dateSelected(event: MatCalendarUserEvent<number>) {
+  _dateSelected(event: NgxMatCalendarUserEvent<number>) {
     const date = event.value;
     const selectedDate = this._getDateFromDayOfMonth(date);
     let rangeStartDate: number | null;
@@ -289,7 +289,7 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
    * parent's value asynchronously via the `activeDateChange` event. The child component receives an
    * updated value asynchronously via the `activeCell` Input.
    */
-  _updateActiveDate(event: MatCalendarUserEvent<number>) {
+  _updateActiveDate(event: NgxMatCalendarUserEvent<number>) {
     const month = event.value;
     const oldActiveDate = this._activeDate;
     this.activeDate = this._getDateFromDayOfMonth(month);
@@ -436,7 +436,7 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
   }
 
   /** Called when the user has activated a new cell and the preview needs to be updated. */
-  _previewChanged({event, value: cell}: MatCalendarUserEvent<MatCalendarCell<D> | null>) {
+  _previewChanged({event, value: cell}: NgxMatCalendarUserEvent<NgxMatCalendarCell<D> | null>) {
     if (this._rangeStrategy) {
       // We can assume that this will be a range, because preview
       // events aren't fired for single date selections.
@@ -475,7 +475,7 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
    * Called when the user has ended a drag. If the drag/drop was successful,
    * computes and emits the new range selection.
    */
-  protected _dragEnded(event: MatCalendarUserEvent<D | null>) {
+  protected _dragEnded(event: NgxMatCalendarUserEvent<D | null>) {
     if (!this.activeDrag) return;
 
     if (event.value) {
@@ -538,7 +538,7 @@ export class NgxMatMonthView<D> implements AfterContentInit, OnChanges, OnDestro
       const cellClasses = this.dateClass ? this.dateClass(date, 'month') : undefined;
 
       this._weeks[this._weeks.length - 1].push(
-        new MatCalendarCell<D>(
+        new NgxMatCalendarCell<D>(
           i + 1,
           dateNames[i],
           ariaLabel,

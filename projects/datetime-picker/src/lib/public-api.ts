@@ -11,34 +11,34 @@ export * from './calendar';
 export * from './calendar-body';
 export * from './datepicker';
 export {
-  MAT_DATE_RANGE_SELECTION_STRATEGY,
-  MatDateRangeSelectionStrategy,
-  DefaultMatCalendarRangeStrategy,
+  NGX_MAT_DATE_RANGE_SELECTION_STRATEGY,
+  NgxMatDateRangeSelectionStrategy,
+  NgxDefaultMatCalendarRangeStrategy,
 } from './date-range-selection-strategy';
 export * from './datepicker-animations';
 export {
-  MAT_DATEPICKER_SCROLL_STRATEGY,
-  MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY,
-  MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER,
-  NgxMatDatepickerContent as MatDatepickerContent,
-  DatepickerDropdownPositionX,
-  DatepickerDropdownPositionY,
-  MatDatepickerControl,
-  MatDatepickerPanel,
+  NGX_MAT_DATEPICKER_SCROLL_STRATEGY,
+  NGX_MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY,
+  NGX_MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER,
+  NgxMatDatepickerContent,
+  NgxDatepickerDropdownPositionX,
+  NgxDatepickerDropdownPositionY,
+  NgxMatDatepickerControl,
+  NgxMatDatepickerPanel,
 } from './datepicker-base';
 export {MatDatepickerInputEvent, DateFilterFn} from './datepicker-input-base';
 export {
-  MAT_DATEPICKER_VALUE_ACCESSOR,
-  MAT_DATEPICKER_VALIDATORS,
-  MatDatepickerInput,
+  NGX_MAT_DATEPICKER_VALUE_ACCESSOR,
+  NGX_MAT_DATEPICKER_VALIDATORS,
+  NgxMatDatepickerInput,
 } from './datepicker-input';
 export * from './datepicker-intl';
 export * from './datepicker-toggle';
 export * from './month-view';
 export * from './year-view';
 export * from './date-range-input';
-export {NgxMatDateRangePicker as MatDateRangePicker} from './date-range-picker';
+export {NgxMatDateRangePicker} from './date-range-picker';
 export * from './date-selection-model';
-export {MatStartDate, MatEndDate} from './date-range-input-parts';
-export {NgxMatMultiYearView as MatMultiYearView, yearsPerPage, yearsPerRow} from './multi-year-view';
+export {NgxMatStartDate, NgxMatEndDate} from './date-range-input-parts';
+export {NgxMatMultiYearView, yearsPerPage, yearsPerRow} from './multi-year-view';
 export * from './datepicker-actions';

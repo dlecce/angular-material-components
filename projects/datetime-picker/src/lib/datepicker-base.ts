@@ -61,24 +61,24 @@ import {DateAdapter, ThemePalette} from '@angular/material/core';
 import {merge, Observable, Subject, Subscription} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
 import {NgxMatCalendar, MatCalendarView} from './calendar';
-import {MatCalendarCellClassFunction, MatCalendarUserEvent} from './calendar-body';
+import {NgxMatCalendarCellClassFunction, NgxMatCalendarUserEvent} from './calendar-body';
 import {
-  MAT_DATE_RANGE_SELECTION_STRATEGY,
-  MatDateRangeSelectionStrategy,
+  NGX_MAT_DATE_RANGE_SELECTION_STRATEGY,
+  NgxMatDateRangeSelectionStrategy,
 } from './date-range-selection-strategy';
 import {
   DateRange,
-  ExtractDateTypeFromSelection,
+  ExtractDateTypeFromSelection as NgxExtractDateTypeFromSelection,
   MatDateSelectionModel,
 } from './date-selection-model';
 import {createMissingDateImplError} from './datepicker-errors';
 import {DateFilterFn} from './datepicker-input-base';
-import {MatDatepickerIntl} from './datepicker-intl';
+import {NgxMatDatepickerIntl} from './datepicker-intl';
 import {_CdkPrivateStyleLoader, _VisuallyHiddenLoader} from '@angular/cdk/private';
 
 /** Injection token that determines the scroll handling while the calendar is open. */
-export const MAT_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>(
-  'mat-datepicker-scroll-strategy',
+export const NGX_MAT_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>(
+  'ngx-mat-datepicker-scroll-strategy',
   {
     providedIn: 'root',
     factory: () => {
@@ -93,25 +93,25 @@ export const MAT_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStr
  * @deprecated No longer used, will be removed.
  * @breaking-change 21.0.0
  */
-export function MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {
+export function NGX_MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {
   return () => overlay.scrollStrategies.reposition();
 }
 
 /** Possible positions for the datepicker dropdown along the X axis. */
-export type DatepickerDropdownPositionX = 'start' | 'end';
+export type NgxDatepickerDropdownPositionX = 'start' | 'end';
 
 /** Possible positions for the datepicker dropdown along the Y axis. */
-export type DatepickerDropdownPositionY = 'above' | 'below';
+export type NgxDatepickerDropdownPositionY = 'above' | 'below';
 
 /**
  * @docs-private
  * @deprecated No longer used, will be removed.
  * @breaking-change 21.0.0
  */
-export const MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER = {
-  provide: MAT_DATEPICKER_SCROLL_STRATEGY,
+export const NGX_MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER = {
+  provide: NGX_MAT_DATEPICKER_SCROLL_STRATEGY,
   deps: [Overlay],
-  useFactory: MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY,
+  useFactory: NGX_MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY,
 };
 
 /**
@@ -136,7 +136,7 @@ export const MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CdkTrapFocus, NgxMatCalendar, CdkPortalOutlet, MatButton],
 })
-export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
+export class NgxMatDatepickerContent<S, D = NgxExtractDateTypeFromSelection<S>>
   implements AfterViewInit, OnDestroy
 {
   protected _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
@@ -146,8 +146,8 @@ export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
   private _globalModel = inject<MatDateSelectionModel<S, D>>(MatDateSelectionModel);
   private _dateAdapter = inject<DateAdapter<D>>(DateAdapter)!;
   private _ngZone = inject(NgZone);
-  private _rangeSelectionStrategy = inject<MatDateRangeSelectionStrategy<D>>(
-    MAT_DATE_RANGE_SELECTION_STRATEGY,
+  private _rangeSelectionStrategy = inject<NgxMatDateRangeSelectionStrategy<D>>(
+    NGX_MAT_DATE_RANGE_SELECTION_STRATEGY,
     {optional: true},
   );
 
@@ -169,7 +169,7 @@ export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
   @Input() color: ThemePalette;
 
   /** Reference to the datepicker that created the overlay. */
-  datepicker: MatDatepickerBase<any, S, D>;
+  datepicker: NgxMatDatepickerBase<any, S, D>;
 
   /** Start of the comparison range. */
   comparisonStart: D | null;
@@ -208,7 +208,7 @@ export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
 
   constructor() {
     inject(_CdkPrivateStyleLoader).load(_VisuallyHiddenLoader);
-    this._closeButtonText = inject(MatDatepickerIntl).closeCalendarLabel;
+    this._closeButtonText = inject(NgxMatDatepickerIntl).closeCalendarLabel;
 
     if (!this._animationsDisabled) {
       const element = this._elementRef.nativeElement;
@@ -236,7 +236,7 @@ export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
     this._animationDone.complete();
   }
 
-  _handleUserSelection(event: MatCalendarUserEvent<D | null>) {
+  _handleUserSelection(event: NgxMatCalendarUserEvent<D | null>) {
     const selection = this._model.selection;
     const value = event.value;
     const isRange = selection instanceof DateRange;
@@ -266,7 +266,7 @@ export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
     }
   }
 
-  _handleUserDragDrop(event: MatCalendarUserEvent<DateRange<D>>) {
+  _handleUserDragDrop(event: NgxMatCalendarUserEvent<DateRange<D>>) {
     this._model.updateSelection(event.value as unknown as S, this);
   }
 
@@ -336,7 +336,7 @@ export class NgxMatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
 }
 
 /** Form control that can be associated with a datepicker. */
-export interface MatDatepickerControl<D> {
+export interface NgxMatDatepickerControl<D> {
   getStartValue(): D | null;
   getThemePalette(): ThemePalette;
   min: D | null;
@@ -348,11 +348,11 @@ export interface MatDatepickerControl<D> {
   stateChanges: Observable<void>;
 }
 
-/** A datepicker that can be attached to a {@link MatDatepickerControl}. */
-export interface MatDatepickerPanel<
-  C extends MatDatepickerControl<D>,
+/** A datepicker that can be attached to a {@link NgxMatDatepickerControl}. */
+export interface NgxMatDatepickerPanel<
+  C extends NgxMatDatepickerControl<D>,
   S,
-  D = ExtractDateTypeFromSelection<S>,
+  D = NgxExtractDateTypeFromSelection<S>,
 > {
   /** Stream that emits whenever the date picker is closed. */
   closedStream: EventEmitter<void>;
@@ -384,12 +384,12 @@ export interface MatDatepickerPanel<
 
 /** Base class for a datepicker. */
 @Directive()
-export abstract class MatDatepickerBase<
-    C extends MatDatepickerControl<D>,
+export abstract class NgxMatDatepickerBase<
+    C extends NgxMatDatepickerControl<D>,
     S,
-    D = ExtractDateTypeFromSelection<S>,
+    D = NgxExtractDateTypeFromSelection<S>,
   >
-  implements MatDatepickerPanel<C, S, D>, OnDestroy, OnChanges
+  implements NgxMatDatepickerPanel<C, S, D>, OnDestroy, OnChanges
 {
   private _overlay = inject(Overlay);
   private _viewContainerRef = inject(ViewContainerRef);
@@ -397,7 +397,7 @@ export abstract class MatDatepickerBase<
   private _dir = inject(Directionality, {optional: true});
   private _model = inject<MatDateSelectionModel<S, D>>(MatDateSelectionModel);
 
-  private _scrollStrategy = inject(MAT_DATEPICKER_SCROLL_STRATEGY);
+  private _scrollStrategy = inject(NGX_MAT_DATEPICKER_SCROLL_STRATEGY);
   private _inputStateChanges = Subscription.EMPTY;
   private _document = inject(DOCUMENT);
 
@@ -461,11 +461,11 @@ export abstract class MatDatepickerBase<
 
   /** Preferred position of the datepicker in the X axis. */
   @Input()
-  xPosition: DatepickerDropdownPositionX = 'start';
+  xPosition: NgxDatepickerDropdownPositionX = 'start';
 
   /** Preferred position of the datepicker in the Y axis. */
   @Input()
-  yPosition: DatepickerDropdownPositionY = 'below';
+  yPosition: NgxDatepickerDropdownPositionY = 'below';
 
   /**
    * Whether to restore focus to the previously-focused element when the calendar is closed.
@@ -495,7 +495,7 @@ export abstract class MatDatepickerBase<
   );
 
   /** Function that can be used to add custom CSS classes to dates. */
-  @Input() dateClass: MatCalendarCellClassFunction<D>;
+  @Input() dateClass: NgxMatCalendarCellClassFunction<D>;
 
   /** Emits when the datepicker has been opened. */
   @Output('opened') readonly openedStream = new EventEmitter<void>();

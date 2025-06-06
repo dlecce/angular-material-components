@@ -7,7 +7,7 @@
  */
 
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {MatDatepickerBase, NgxMatDatepickerContent, MatDatepickerControl} from './datepicker-base';
+import {NgxMatDatepickerBase, NgxMatDatepickerContent, NgxMatDatepickerControl} from './datepicker-base';
 import {MAT_RANGE_DATE_SELECTION_MODEL_PROVIDER, DateRange} from './date-selection-model';
 import {MAT_CALENDAR_RANGE_STRATEGY_PROVIDER} from './date-range-selection-strategy';
 
@@ -15,7 +15,7 @@ import {MAT_CALENDAR_RANGE_STRATEGY_PROVIDER} from './date-range-selection-strat
  * Input that can be associated with a date range picker.
  * @docs-private
  */
-export interface MatDateRangePickerInput<D> extends MatDatepickerControl<D> {
+export interface MatDateRangePickerInput<D> extends NgxMatDatepickerControl<D> {
   _getEndDateAccessibleName(): string | null;
   _getStartDateAccessibleName(): string | null;
   comparisonStart: D | null;
@@ -35,10 +35,10 @@ export interface MatDateRangePickerInput<D> extends MatDatepickerControl<D> {
   providers: [
     MAT_RANGE_DATE_SELECTION_MODEL_PROVIDER,
     MAT_CALENDAR_RANGE_STRATEGY_PROVIDER,
-    {provide: MatDatepickerBase, useExisting: NgxMatDateRangePicker},
+    {provide: NgxMatDatepickerBase, useExisting: NgxMatDateRangePicker},
   ],
 })
-export class NgxMatDateRangePicker<D> extends MatDatepickerBase<
+export class NgxMatDateRangePicker<D> extends NgxMatDatepickerBase<
   MatDateRangePickerInput<D>,
   DateRange<D>,
   D

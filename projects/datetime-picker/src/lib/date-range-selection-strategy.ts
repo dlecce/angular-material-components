@@ -11,12 +11,12 @@ import {DateAdapter} from '@angular/material/core';
 import {DateRange} from './date-selection-model';
 
 /** Injection token used to customize the date range selection behavior. */
-export const MAT_DATE_RANGE_SELECTION_STRATEGY = new InjectionToken<
-  MatDateRangeSelectionStrategy<any>
->('MAT_DATE_RANGE_SELECTION_STRATEGY');
+export const NGX_MAT_DATE_RANGE_SELECTION_STRATEGY = new InjectionToken<
+  NgxMatDateRangeSelectionStrategy<any>
+>('NGX_MAT_DATE_RANGE_SELECTION_STRATEGY');
 
 /** Object that can be provided in order to customize the date range selection behavior. */
-export interface MatDateRangeSelectionStrategy<D> {
+export interface NgxMatDateRangeSelectionStrategy<D> {
   /**
    * Called when the user has finished selecting a value.
    * @param date Date that was selected. Will be null if the user cleared the selection.
@@ -58,7 +58,7 @@ export interface MatDateRangeSelectionStrategy<D> {
 
 /** Provides the default date range selection behavior. */
 @Injectable()
-export class DefaultMatCalendarRangeStrategy<D> implements MatDateRangeSelectionStrategy<D> {
+export class NgxDefaultMatCalendarRangeStrategy<D> implements NgxMatDateRangeSelectionStrategy<D> {
   constructor(private _dateAdapter: DateAdapter<D>) {}
 
   selectionFinished(date: D, currentRange: DateRange<D>) {
@@ -137,10 +137,10 @@ export class DefaultMatCalendarRangeStrategy<D> implements MatDateRangeSelection
  * @breaking-change 21.0.0
  */
 export function MAT_CALENDAR_RANGE_STRATEGY_PROVIDER_FACTORY(
-  parent: MatDateRangeSelectionStrategy<unknown>,
+  parent: NgxMatDateRangeSelectionStrategy<unknown>,
   adapter: DateAdapter<unknown>,
 ) {
-  return parent || new DefaultMatCalendarRangeStrategy(adapter);
+  return parent || new NgxDefaultMatCalendarRangeStrategy(adapter);
 }
 
 /**
@@ -149,7 +149,7 @@ export function MAT_CALENDAR_RANGE_STRATEGY_PROVIDER_FACTORY(
  * @breaking-change 21.0.0
  */
 export const MAT_CALENDAR_RANGE_STRATEGY_PROVIDER: FactoryProvider = {
-  provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
-  deps: [[new Optional(), new SkipSelf(), MAT_DATE_RANGE_SELECTION_STRATEGY], DateAdapter],
+  provide: NGX_MAT_DATE_RANGE_SELECTION_STRATEGY,
+  deps: [[new Optional(), new SkipSelf(), NGX_MAT_DATE_RANGE_SELECTION_STRATEGY], DateAdapter],
   useFactory: MAT_CALENDAR_RANGE_STRATEGY_PROVIDER_FACTORY,
 };

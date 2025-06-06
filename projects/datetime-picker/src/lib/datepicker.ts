@@ -7,7 +7,7 @@
  */
 
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {MatDatepickerBase, MatDatepickerControl} from './datepicker-base';
+import {NgxMatDatepickerBase, NgxMatDatepickerControl} from './datepicker-base';
 import {MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER} from './date-selection-model';
 
 // TODO(mmalerba): We use a component instead of a directive here so the user can use implicit
@@ -22,7 +22,7 @@ import {MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER} from './date-selection-model';
   encapsulation: ViewEncapsulation.None,
   providers: [
     MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER,
-    {provide: MatDatepickerBase, useExisting: NgxMatDatetimePicker},
+    {provide: NgxMatDatepickerBase, useExisting: NgxMatDatetimePicker},
   ],
 })
-export class NgxMatDatetimePicker<D> extends MatDatepickerBase<MatDatepickerControl<D>, D | null, D> {}
+export class NgxMatDatetimePicker<D> extends NgxMatDatepickerBase<NgxMatDatepickerControl<D>, D | null, D> {}

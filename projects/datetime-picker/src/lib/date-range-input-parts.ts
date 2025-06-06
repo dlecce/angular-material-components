@@ -32,7 +32,7 @@ import {
 import {ErrorStateMatcher, _ErrorStateTracker} from '@angular/material/core';
 import {_computeAriaAccessibleName} from './aria-accessible-name';
 import {DateRange, DateSelectionModelChange} from './date-selection-model';
-import {MatDatepickerInputBase} from './datepicker-input-base';
+import {NgxMatDatepickerInputBase} from './datepicker-input-base';
 import {NgxMatDateRangeInput} from './date-range-input';
 
 /**
@@ -40,7 +40,7 @@ import {NgxMatDateRangeInput} from './date-range-input';
  */
 @Directive()
 abstract class MatDateRangeInputPartBase<D>
-  extends MatDatepickerInputBase<DateRange<D>>
+  extends NgxMatDatepickerInputBase<DateRange<D>>
   implements OnInit, AfterContentInit, DoCheck
 {
   _rangeInput = inject<NgxMatDateRangeInput<D>>(NgxMatDateRangeInput);
@@ -224,14 +224,14 @@ abstract class MatDateRangeInputPartBase<D>
     'type': 'text',
   },
   providers: [
-    {provide: NG_VALUE_ACCESSOR, useExisting: MatStartDate, multi: true},
-    {provide: NG_VALIDATORS, useExisting: MatStartDate, multi: true},
+    {provide: NG_VALUE_ACCESSOR, useExisting: NgxMatStartDate, multi: true},
+    {provide: NG_VALIDATORS, useExisting: NgxMatStartDate, multi: true},
   ],
   // These need to be specified explicitly, because some tooling doesn't
   // seem to pick them up from the base class. See #20932.
   outputs: ['dateChange', 'dateInput'],
 })
-export class MatStartDate<D> extends MatDateRangeInputPartBase<D> {
+export class NgxMatStartDate<D> extends MatDateRangeInputPartBase<D> {
   /** Validator that checks that the start date isn't after the end date. */
   private _startValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const start = this._dateAdapter.getValidDateOrNull(
@@ -314,14 +314,14 @@ export class MatStartDate<D> extends MatDateRangeInputPartBase<D> {
     'type': 'text',
   },
   providers: [
-    {provide: NG_VALUE_ACCESSOR, useExisting: MatEndDate, multi: true},
-    {provide: NG_VALIDATORS, useExisting: MatEndDate, multi: true},
+    {provide: NG_VALUE_ACCESSOR, useExisting: NgxMatEndDate, multi: true},
+    {provide: NG_VALIDATORS, useExisting: NgxMatEndDate, multi: true},
   ],
   // These need to be specified explicitly, because some tooling doesn't
   // seem to pick them up from the base class. See #20932.
   outputs: ['dateChange', 'dateInput'],
 })
-export class MatEndDate<D> extends MatDateRangeInputPartBase<D> {
+export class NgxMatEndDate<D> extends MatDateRangeInputPartBase<D> {
   /** Validator that checks that the end date isn't before the start date. */
   private _endValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const end = this._dateAdapter.getValidDateOrNull(this._dateAdapter.deserialize(control.value));

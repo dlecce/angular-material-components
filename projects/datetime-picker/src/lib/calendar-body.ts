@@ -29,16 +29,16 @@ import {_IdGenerator} from '@angular/cdk/a11y';
 import {NgClass} from '@angular/common';
 import {_CdkPrivateStyleLoader} from '@angular/cdk/private';
 import { _StructuralStylesLoader } from '@angular/material/core';
-import {MatDatepickerIntl} from './datepicker-intl';
+import {NgxMatDatepickerIntl} from './datepicker-intl';
 
 /** Extra CSS classes that can be associated with a calendar cell. */
-export type MatCalendarCellCssClasses = string | string[] | Set<string> | {[key: string]: any};
+export type NgxMatCalendarCellCssClasses = string | string[] | Set<string> | {[key: string]: any};
 
 /** Function that can generate the extra classes that should be added to a calendar cell. */
-export type MatCalendarCellClassFunction<D> = (
+export type NgxMatCalendarCellClassFunction<D> = (
   date: D,
   view: 'month' | 'year' | 'multi-year',
-) => MatCalendarCellCssClasses;
+) => NgxMatCalendarCellCssClasses;
 
 let uniqueIdCounter = 0;
 
@@ -46,7 +46,7 @@ let uniqueIdCounter = 0;
  * An internal class that represents the data corresponding to a single calendar cell.
  * @docs-private
  */
-export class MatCalendarCell<D = any> {
+export class NgxMatCalendarCell<D = any> {
   readonly id = uniqueIdCounter++;
 
   constructor(
@@ -54,14 +54,14 @@ export class MatCalendarCell<D = any> {
     public displayValue: string,
     public ariaLabel: string,
     public enabled: boolean,
-    public cssClasses: MatCalendarCellCssClasses = {},
+    public cssClasses: NgxMatCalendarCellCssClasses = {},
     public compareValue = value,
     public rawValue?: D,
   ) {}
 }
 
 /** Event emitted when a date inside the calendar is triggered as a result of a user action. */
-export interface MatCalendarUserEvent<D> {
+export interface NgxMatCalendarUserEvent<D> {
   value: D;
   event: Event;
 }
@@ -101,7 +101,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
   private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private _ngZone = inject(NgZone);
   private _platform = inject(Platform);
-  private _intl = inject(MatDatepickerIntl);
+  private _intl = inject(NgxMatDatepickerIntl);
   private _eventCleanups: (() => void)[];
 
   /**
@@ -119,7 +119,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
   @Input() label: string;
 
   /** The cells to display in the table. */
-  @Input() rows: MatCalendarCell[][];
+  @Input() rows: NgxMatCalendarCell[][];
 
   /** The value in the table that corresponds to today. */
   @Input() todayValue: number;
@@ -174,20 +174,20 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
   @Input() endDateAccessibleName: string | null;
 
   /** Emits when a new value is selected. */
-  @Output() readonly selectedValueChange = new EventEmitter<MatCalendarUserEvent<number>>();
+  @Output() readonly selectedValueChange = new EventEmitter<NgxMatCalendarUserEvent<number>>();
 
   /** Emits when the preview has changed as a result of a user action. */
   @Output() readonly previewChange = new EventEmitter<
-    MatCalendarUserEvent<MatCalendarCell | null>
+    NgxMatCalendarUserEvent<NgxMatCalendarCell | null>
   >();
 
-  @Output() readonly activeDateChange = new EventEmitter<MatCalendarUserEvent<number>>();
+  @Output() readonly activeDateChange = new EventEmitter<NgxMatCalendarUserEvent<number>>();
 
   /** Emits the date at the possible start of a drag event. */
-  @Output() readonly dragStarted = new EventEmitter<MatCalendarUserEvent<D>>();
+  @Output() readonly dragStarted = new EventEmitter<NgxMatCalendarUserEvent<D>>();
 
   /** Emits the date at the conclusion of a drag, or null if mouse was not released on a date. */
-  @Output() readonly dragEnded = new EventEmitter<MatCalendarUserEvent<D | null>>();
+  @Output() readonly dragEnded = new EventEmitter<NgxMatCalendarUserEvent<D | null>>();
 
   /** The number of blank cells to put at the beginning for the first row. */
   _firstRowOffset: number;
@@ -221,7 +221,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
    * key on the row, but that would require a breaking change for the `rows` input. We don't
    * use the built-in identity tracking, because it logs warnings.
    */
-  _trackRow = (row: MatCalendarCell[]) => row;
+  _trackRow = (row: NgxMatCalendarCell[]) => row;
 
   constructor(...args: unknown[]);
 
@@ -302,7 +302,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
   }
 
   /** Called when a cell is clicked. */
-  _cellClicked(cell: MatCalendarCell, event: MouseEvent): void {
+  _cellClicked(cell: NgxMatCalendarCell, event: MouseEvent): void {
     // Ignore "clicks" that are actually canceled drags (eg the user dragged
     // off and then went back to this cell to undo).
     if (this._didDragSinceMouseDown) {
@@ -314,7 +314,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
     }
   }
 
-  _emitActiveDateChange(cell: MatCalendarCell, event: FocusEvent): void {
+  _emitActiveDateChange(cell: NgxMatCalendarCell, event: FocusEvent): void {
     if (cell.enabled) {
       this.activeDateChange.emit({value: cell.value, event});
     }
@@ -432,7 +432,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
       return false;
     }
 
-    let previousCell: MatCalendarCell | undefined = this.rows[rowIndex][colIndex - 1];
+    let previousCell: NgxMatCalendarCell | undefined = this.rows[rowIndex][colIndex - 1];
 
     if (!previousCell) {
       const previousRow = this.rows[rowIndex - 1];
@@ -448,7 +448,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
       return false;
     }
 
-    let nextCell: MatCalendarCell | undefined = this.rows[rowIndex][colIndex + 1];
+    let nextCell: NgxMatCalendarCell | undefined = this.rows[rowIndex][colIndex + 1];
 
     if (!nextCell) {
       const nextRow = this.rows[rowIndex + 1];
@@ -649,7 +649,7 @@ export class NgxMatCalendarBody<D = any> implements OnChanges, OnDestroy, AfterV
   };
 
   /** Finds the MatCalendarCell that corresponds to a DOM node. */
-  private _getCellFromElement(element: HTMLElement): MatCalendarCell | null {
+  private _getCellFromElement(element: HTMLElement): NgxMatCalendarCell | null {
     const cell = getCellElement(element);
 
     if (cell) {

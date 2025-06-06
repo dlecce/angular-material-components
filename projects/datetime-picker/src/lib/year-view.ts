@@ -35,9 +35,9 @@ import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from '@angular/material/c
 import {Directionality} from '@angular/cdk/bidi';
 import {
   NgxMatCalendarBody,
-  MatCalendarCell,
-  MatCalendarUserEvent,
-  MatCalendarCellClassFunction,
+  NgxMatCalendarCell,
+  NgxMatCalendarUserEvent,
+  NgxMatCalendarCellClassFunction,
 } from './calendar-body';
 import {createMissingDateImplError} from './datepicker-errors';
 import {Subscription} from 'rxjs';
@@ -124,7 +124,7 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
   @Input() dateFilter: (date: D) => boolean;
 
   /** Function that can be used to add custom CSS classes to date cells. */
-  @Input() dateClass: MatCalendarCellClassFunction<D>;
+  @Input() dateClass: NgxMatCalendarCellClassFunction<D>;
 
   /** Emits when a new month is selected. */
   @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
@@ -139,7 +139,7 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
   @ViewChild(NgxMatCalendarBody) _matCalendarBody: NgxMatCalendarBody;
 
   /** Grid of calendar cells representing the months of the year. */
-  _months: MatCalendarCell[][];
+  _months: NgxMatCalendarCell[][];
 
   /** The label for this year (e.g. "2017"). */
   _yearLabel: string;
@@ -179,7 +179,7 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
   }
 
   /** Handles when a new month is selected. */
-  _monthSelected(event: MatCalendarUserEvent<number>) {
+  _monthSelected(event: NgxMatCalendarUserEvent<number>) {
     const month = event.value;
 
     const selectedMonth = this._dateAdapter.createDate(
@@ -203,7 +203,7 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
    * parent's value asynchronously via the `activeDateChange` event. The child component receives an
    * updated value asynchronously via the `activeCell` Input.
    */
-  _updateActiveDate(event: MatCalendarUserEvent<number>) {
+  _updateActiveDate(event: NgxMatCalendarUserEvent<number>) {
     const month = event.value;
     const oldActiveDate = this._activeDate;
 
@@ -355,7 +355,7 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
     const ariaLabel = this._dateAdapter.format(date, this._dateFormats.display.monthYearA11yLabel);
     const cellClasses = this.dateClass ? this.dateClass(date, 'year') : undefined;
 
-    return new MatCalendarCell(
+    return new NgxMatCalendarCell(
       month,
       monthName.toLocaleUpperCase(),
       ariaLabel,
