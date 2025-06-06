@@ -34,7 +34,7 @@ import {createMissingDateImplError} from './datepicker-errors';
 import {DateFilterFn, _MatFormFieldPartial, dateInputsHaveChanged} from './datepicker-input-base';
 
 @Component({
-  selector: 'mat-date-range-input',
+  selector: 'ngx-mat-date-range-input',
   templateUrl: 'date-range-input.html',
   styleUrl: 'date-range-input.scss',
   exportAs: 'matDateRangeInput',

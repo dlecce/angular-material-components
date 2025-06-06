@@ -207,7 +207,7 @@ abstract class MatDateRangeInputPartBase<D>
 
 /** Input for entering the start date in a `mat-date-range-input`. */
 @Directive({
-  selector: 'input[matStartDate]',
+  selector: 'input[ngxMatStartDate]',
   host: {
     'class': 'mat-start-date mat-date-range-input-inner',
     '[disabled]': 'disabled',
@@ -297,7 +297,7 @@ export class MatStartDate<D> extends MatDateRangeInputPartBase<D> {
 
 /** Input for entering the end date in a `mat-date-range-input`. */
 @Directive({
-  selector: 'input[matEndDate]',
+  selector: 'input[ngxMatEndDate]',
   host: {
     'class': 'mat-end-date mat-date-range-input-inner',
     '[disabled]': 'disabled',

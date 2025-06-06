@@ -49,7 +49,7 @@ import {DateRange} from './date-selection-model';
  * @docs-private
  */
 @Component({
-  selector: 'mat-year-view',
+  selector: 'ngx-mat-year-view',
   templateUrl: 'year-view.html',
   exportAs: 'matYearView',
   encapsulation: ViewEncapsulation.None,

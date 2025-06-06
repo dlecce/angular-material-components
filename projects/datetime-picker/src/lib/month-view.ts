@@ -62,7 +62,7 @@ let uniqueIdCounter = 0;
  * @docs-private
  */
 @Component({
-  selector: 'mat-month-view',
+  selector: 'ngx-mat-month-view',
   templateUrl: 'month-view.html',
   exportAs: 'matMonthView',
   encapsulation: ViewEncapsulation.None,

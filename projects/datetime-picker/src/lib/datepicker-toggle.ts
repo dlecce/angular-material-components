@@ -30,12 +30,12 @@ import {MatDatepickerControl, MatDatepickerPanel} from './datepicker-base';
 
 /** Can be used to override the icon of a `matDatepickerToggle`. */
 @Directive({
-  selector: '[matDatepickerToggleIcon]',
+  selector: '[ngxMatDatepickerToggleIcon]',
 })
 export class MatDatepickerToggleIcon {}
 
 @Component({
-  selector: 'mat-datepicker-toggle',
+  selector: 'ngx-mat-datepicker-toggle',
   templateUrl: 'datepicker-toggle.html',
   styleUrl: 'datepicker-toggle.scss',
   host: {

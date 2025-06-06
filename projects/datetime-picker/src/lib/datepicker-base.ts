@@ -122,7 +122,7 @@ export const MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER = {
  * @docs-private
  */
 @Component({
-  selector: 'mat-datepicker-content',
+  selector: 'ngx-mat-datepicker-content',
   templateUrl: 'datepicker-content.html',
   styleUrl: 'datepicker-content.scss',
   host: {
