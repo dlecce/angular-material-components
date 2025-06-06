@@ -88,7 +88,7 @@ const passiveEventOptions = {passive: true};
 @Component({
   selector: '[mat-calendar-body]',
   templateUrl: 'calendar-body.html',
-  styleUrl: 'calendar-body.css',
+  styleUrl: 'calendar-body.scss',
   host: {
     'class': 'mat-calendar-body',
   },

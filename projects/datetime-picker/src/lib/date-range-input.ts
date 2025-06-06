@@ -36,7 +36,7 @@ import {DateFilterFn, _MatFormFieldPartial, dateInputsHaveChanged} from './datep
 @Component({
   selector: 'mat-date-range-input',
   templateUrl: 'date-range-input.html',
-  styleUrl: 'date-range-input.css',
+  styleUrl: 'date-range-input.scss',
   exportAs: 'matDateRangeInput',
   host: {
     'class': 'mat-date-range-input',

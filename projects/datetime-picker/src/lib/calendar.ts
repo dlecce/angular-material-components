@@ -229,7 +229,7 @@ export class MatCalendarHeader<D> {
 @Component({
   selector: 'mat-calendar',
   templateUrl: 'calendar.html',
-  styleUrl: 'calendar.css',
+  styleUrl: 'calendar.scss',
   host: {
     'class': 'mat-calendar',
   },
