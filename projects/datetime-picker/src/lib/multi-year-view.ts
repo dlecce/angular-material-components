@@ -55,12 +55,12 @@ export const yearsPerRow = 4;
 @Component({
   selector: 'ngx-mat-multi-year-view',
   templateUrl: 'multi-year-view.html',
-  exportAs: 'matMultiYearView',
+  exportAs: 'ngxMatMultiYearView',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgxMatCalendarBody],
 })
-export class MatMultiYearView<D> implements AfterContentInit, OnDestroy {
+export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
   private _changeDetectorRef = inject(ChangeDetectorRef);
   _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
   private _dir = inject(Directionality, {optional: true});

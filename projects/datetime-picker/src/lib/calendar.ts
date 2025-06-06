@@ -34,7 +34,7 @@ import {NgxMatMonthView} from './month-view';
 import {
   getActiveOffset,
   isSameMultiYearView,
-  MatMultiYearView,
+  NgxMatMultiYearView,
   yearsPerPage,
 } from './multi-year-view';
 import {MatYearView} from './year-view';
@@ -237,7 +237,7 @@ export class NgxMatCalendarHeader<D> {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER],
-  imports: [CdkPortalOutlet, CdkMonitorFocus, NgxMatMonthView, MatYearView, MatMultiYearView],
+  imports: [CdkPortalOutlet, CdkMonitorFocus, NgxMatMonthView, MatYearView, NgxMatMultiYearView],
 })
 export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
   private _dateAdapter = inject<DateAdapter<D>>(DateAdapter, {optional: true})!;
@@ -361,7 +361,7 @@ export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, On
   @ViewChild(MatYearView) yearView: MatYearView<D>;
 
   /** Reference to the current multi-year view component. */
-  @ViewChild(MatMultiYearView) multiYearView: MatMultiYearView<D>;
+  @ViewChild(NgxMatMultiYearView) multiYearView: NgxMatMultiYearView<D>;
 
   /**
    * The current active date. This determines which time period is shown and which date is
@@ -537,7 +537,7 @@ export class NgxMatCalendar<D> implements AfterContentInit, AfterViewChecked, On
   }
 
   /** Returns the component instance that corresponds to the current calendar view. */
-  private _getCurrentViewComponent(): NgxMatMonthView<D> | MatYearView<D> | MatMultiYearView<D> {
+  private _getCurrentViewComponent(): NgxMatMonthView<D> | MatYearView<D> | NgxMatMultiYearView<D> {
     // The return type is explicitly written as a union to ensure that the Closure compiler does
     // not optimize calls to _init(). Without the explicit return type, TypeScript narrows it to
     // only the first component type. See https://github.com/angular/components/issues/22996.

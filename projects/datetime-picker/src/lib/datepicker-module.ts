@@ -24,7 +24,7 @@ import {MatDatepickerInput} from './datepicker-input';
 import {MatDatepickerIntl} from './datepicker-intl';
 import {NgxMatDatepickerToggle, MatDatepickerToggleIcon} from './datepicker-toggle';
 import {NgxMatMonthView} from './month-view';
-import {MatMultiYearView} from './multi-year-view';
+import {NgxMatMultiYearView} from './multi-year-view';
 import {MatYearView} from './year-view';
 import {NgxMatDateRangeInput} from './date-range-input';
 import {MatStartDate, MatEndDate} from './date-range-input-parts';
@@ -47,7 +47,7 @@ import {NgxMatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from '
     MatDatepickerToggleIcon,
     NgxMatMonthView,
     MatYearView,
-    MatMultiYearView,
+    NgxMatMultiYearView,
     NgxMatCalendarHeader,
     NgxMatDateRangeInput,
     MatStartDate,
@@ -68,7 +68,7 @@ import {NgxMatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from '
     MatDatepickerToggleIcon,
     NgxMatMonthView,
     MatYearView,
-    MatMultiYearView,
+    NgxMatMultiYearView,
     NgxMatCalendarHeader,
     NgxMatDateRangeInput,
     MatStartDate,
