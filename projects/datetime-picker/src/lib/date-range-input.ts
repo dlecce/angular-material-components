@@ -37,7 +37,7 @@ import {DateFilterFn, _MatFormFieldPartial, dateInputsHaveChanged} from './datep
   selector: 'ngx-mat-date-range-input',
   templateUrl: 'date-range-input.html',
   styleUrl: 'date-range-input.scss',
-  exportAs: 'matDateRangeInput',
+  exportAs: 'ngxMatDateRangeInput',
   host: {
     'class': 'mat-date-range-input',
     '[class.mat-date-range-input-hide-placeholders]': '_shouldHidePlaceholders()',
@@ -52,10 +52,10 @@ import {DateFilterFn, _MatFormFieldPartial, dateInputsHaveChanged} from './datep
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  providers: [{provide: MatFormFieldControl, useExisting: MatDateRangeInput}],
+  providers: [{provide: MatFormFieldControl, useExisting: NgxMatDateRangeInput}],
   imports: [CdkMonitorFocus],
 })
-export class MatDateRangeInput<D>
+export class NgxMatDateRangeInput<D>
   implements
     MatFormFieldControl<DateRange<D>>,
     MatDatepickerControl<D>,

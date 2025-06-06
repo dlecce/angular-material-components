@@ -33,7 +33,7 @@ import {ErrorStateMatcher, _ErrorStateTracker} from '@angular/material/core';
 import {_computeAriaAccessibleName} from './aria-accessible-name';
 import {DateRange, DateSelectionModelChange} from './date-selection-model';
 import {MatDatepickerInputBase} from './datepicker-input-base';
-import {MatDateRangeInput} from './date-range-input';
+import {NgxMatDateRangeInput} from './date-range-input';
 
 /**
  * Base class for the individual inputs that can be projected inside a `mat-date-range-input`.
@@ -43,7 +43,7 @@ abstract class MatDateRangeInputPartBase<D>
   extends MatDatepickerInputBase<DateRange<D>>
   implements OnInit, AfterContentInit, DoCheck
 {
-  _rangeInput = inject<MatDateRangeInput<D>>(MatDateRangeInput);
+  _rangeInput = inject<NgxMatDateRangeInput<D>>(NgxMatDateRangeInput);
   override _elementRef = inject<ElementRef<HTMLInputElement>>(ElementRef);
   _defaultErrorStateMatcher = inject(ErrorStateMatcher);
   private _injector = inject(Injector);
