@@ -42,7 +42,7 @@ import {
 import {createMissingDateImplError} from './datepicker-errors';
 import {Subscription} from 'rxjs';
 import {startWith} from 'rxjs/operators';
-import {DateRange} from './date-selection-model';
+import {NgxDateRange} from './date-selection-model';
 
 /**
  * An internal component used to display a single year in the datepicker.
@@ -86,11 +86,11 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
 
   /** The currently selected date. */
   @Input()
-  get selected(): DateRange<D> | D | null {
+  get selected(): NgxDateRange<D> | D | null {
     return this._selected;
   }
-  set selected(value: DateRange<D> | D | null) {
-    if (value instanceof DateRange) {
+  set selected(value: NgxDateRange<D> | D | null) {
+    if (value instanceof NgxDateRange) {
       this._selected = value;
     } else {
       this._selected = this._dateAdapter.getValidDateOrNull(this._dateAdapter.deserialize(value));
@@ -98,7 +98,7 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
 
     this._setSelectedMonth(value);
   }
-  private _selected: DateRange<D> | D | null;
+  private _selected: NgxDateRange<D> | D | null;
 
   /** The minimum selectable date. */
   @Input()
@@ -433,8 +433,8 @@ export class NgxMatYearView<D> implements AfterContentInit, OnDestroy {
   }
 
   /** Sets the currently-selected month based on a model value. */
-  private _setSelectedMonth(value: DateRange<D> | D | null) {
-    if (value instanceof DateRange) {
+  private _setSelectedMonth(value: NgxDateRange<D> | D | null) {
+    if (value instanceof NgxDateRange) {
       this._selectedMonth =
         this._getMonthInCurrentYear(value.start) || this._getMonthInCurrentYear(value.end);
     } else {

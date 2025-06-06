@@ -8,7 +8,7 @@
 
 import {Injectable, InjectionToken, Optional, SkipSelf, FactoryProvider} from '@angular/core';
 import {DateAdapter} from '@angular/material/core';
-import {DateRange} from './date-selection-model';
+import {NgxDateRange} from './date-selection-model';
 
 /** Injection token used to customize the date range selection behavior. */
 export const NGX_MAT_DATE_RANGE_SELECTION_STRATEGY = new InjectionToken<
@@ -24,7 +24,7 @@ export interface NgxMatDateRangeSelectionStrategy<D> {
    * @param event DOM event that triggered the selection. Currently only corresponds to a `click`
    *    event, but it may get expanded in the future.
    */
-  selectionFinished(date: D | null, currentRange: DateRange<D>, event: Event): DateRange<D>;
+  selectionFinished(date: D | null, currentRange: NgxDateRange<D>, event: Event): NgxDateRange<D>;
 
   /**
    * Called when the user has activated a new date (e.g. by hovering over
@@ -36,7 +36,7 @@ export interface NgxMatDateRangeSelectionStrategy<D> {
    * @param event DOM event that caused the preview to be changed. Will be either a
    *    `mouseenter`/`mouseleave` or `focus`/`blur` depending on how the user is navigating.
    */
-  createPreview(activeDate: D | null, currentRange: DateRange<D>, event: Event): DateRange<D>;
+  createPreview(activeDate: D | null, currentRange: NgxDateRange<D>, event: Event): NgxDateRange<D>;
 
   /**
    * Called when the user has dragged a date in the currently selected range to another
@@ -50,10 +50,10 @@ export interface NgxMatDateRangeSelectionStrategy<D> {
    */
   createDrag?(
     dragOrigin: D,
-    originalRange: DateRange<D>,
+    originalRange: NgxDateRange<D>,
     newDate: D,
     event: Event,
-  ): DateRange<D> | null;
+  ): NgxDateRange<D> | null;
 }
 
 /** Provides the default date range selection behavior. */
@@ -61,7 +61,7 @@ export interface NgxMatDateRangeSelectionStrategy<D> {
 export class NgxDefaultMatCalendarRangeStrategy<D> implements NgxMatDateRangeSelectionStrategy<D> {
   constructor(private _dateAdapter: DateAdapter<D>) {}
 
-  selectionFinished(date: D, currentRange: DateRange<D>) {
+  selectionFinished(date: D, currentRange: NgxDateRange<D>) {
     let {start, end} = currentRange;
 
     if (start == null) {
@@ -73,10 +73,10 @@ export class NgxDefaultMatCalendarRangeStrategy<D> implements NgxMatDateRangeSel
       end = null;
     }
 
-    return new DateRange<D>(start, end);
+    return new NgxDateRange<D>(start, end);
   }
 
-  createPreview(activeDate: D | null, currentRange: DateRange<D>) {
+  createPreview(activeDate: D | null, currentRange: NgxDateRange<D>) {
     let start: D | null = null;
     let end: D | null = null;
 
@@ -85,10 +85,10 @@ export class NgxDefaultMatCalendarRangeStrategy<D> implements NgxMatDateRangeSel
       end = activeDate;
     }
 
-    return new DateRange<D>(start, end);
+    return new NgxDateRange<D>(start, end);
   }
 
-  createDrag(dragOrigin: D, originalRange: DateRange<D>, newDate: D) {
+  createDrag(dragOrigin: D, originalRange: NgxDateRange<D>, newDate: D) {
     let start = originalRange.start;
     let end = originalRange.end;
 
@@ -127,7 +127,7 @@ export class NgxDefaultMatCalendarRangeStrategy<D> implements NgxMatDateRangeSel
       end = adapter.addCalendarDays(end, diffDays);
     }
 
-    return new DateRange<D>(start, end);
+    return new NgxDateRange<D>(start, end);
   }
 }
 

@@ -12,7 +12,7 @@ import {ThemePalette} from '@angular/material/core';
 import {MAT_FORM_FIELD} from '@angular/material/form-field';
 import {MAT_INPUT_VALUE_ACCESSOR} from '@angular/material/input';
 import {Subscription} from 'rxjs';
-import {DateSelectionModelChange} from './date-selection-model';
+import {NgxDateSelectionModelChange} from './date-selection-model';
 import {NgxMatDatepickerControl, NgxMatDatepickerPanel} from './datepicker-base';
 import {_MatFormFieldPartial, DateFilterFn, NgxMatDatepickerInputBase} from './datepicker-input-base';
 
@@ -204,7 +204,7 @@ export class NgxMatDatepickerInput<D>
     return this._dateFilter;
   }
 
-  protected _shouldHandleChangeEvent(event: DateSelectionModelChange<D>) {
+  protected _shouldHandleChangeEvent(event: NgxDateSelectionModelChange<D>) {
     return event.source !== this;
   }
 }

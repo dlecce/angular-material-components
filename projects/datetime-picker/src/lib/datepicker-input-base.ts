@@ -31,9 +31,9 @@ import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats, ThemePalette} from '@angu
 import {Subscription, Subject} from 'rxjs';
 import {createMissingDateImplError} from './datepicker-errors';
 import {
-  ExtractDateTypeFromSelection,
-  MatDateSelectionModel,
-  DateSelectionModelChange,
+  NgxExtractDateTypeFromSelection,
+  NgxMatDateSelectionModel,
+  NgxDateSelectionModelChange,
 } from './date-selection-model';
 
 /**
@@ -78,7 +78,7 @@ export interface _MatFormFieldPartial {
 
 /** Base class for datepicker inputs. */
 @Directive()
-export abstract class NgxMatDatepickerInputBase<S, D = ExtractDateTypeFromSelection<S>>
+export abstract class NgxMatDatepickerInputBase<S, D = NgxExtractDateTypeFromSelection<S>>
   implements ControlValueAccessor, AfterViewInit, OnChanges, OnDestroy, Validator
 {
   protected _elementRef = inject<ElementRef<HTMLInputElement>>(ElementRef);
@@ -96,7 +96,7 @@ export abstract class NgxMatDatepickerInputBase<S, D = ExtractDateTypeFromSelect
   set value(value: any) {
     this._assignValueProgrammatically(value);
   }
-  protected _model: MatDateSelectionModel<S, D> | undefined;
+  protected _model: NgxMatDateSelectionModel<S, D> | undefined;
 
   /** Whether the datepicker-input is disabled. */
   @Input({transform: booleanAttribute})
@@ -206,7 +206,7 @@ export abstract class NgxMatDatepickerInputBase<S, D = ExtractDateTypeFromSelect
   protected abstract _getDateFilter(): DateFilterFn<D> | undefined;
 
   /** Registers a date selection model with the input. */
-  _registerModel(model: MatDateSelectionModel<S, D>): void {
+  _registerModel(model: NgxMatDateSelectionModel<S, D>): void {
     this._model = model;
     this._valueChangesSubscription.unsubscribe();
 
@@ -240,7 +240,7 @@ export abstract class NgxMatDatepickerInputBase<S, D = ExtractDateTypeFromSelect
   protected abstract _validator: ValidatorFn | null;
 
   /** Predicate that determines whether the input should handle a particular change event. */
-  protected abstract _shouldHandleChangeEvent(event: DateSelectionModelChange<S>): boolean;
+  protected abstract _shouldHandleChangeEvent(event: NgxDateSelectionModelChange<S>): boolean;
 
   /** Whether the last value set on the input was valid. */
   protected _lastValueValid = false;

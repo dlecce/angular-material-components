@@ -28,7 +28,7 @@ import {MAT_FORM_FIELD, MatFormFieldControl} from '@angular/material/form-field'
 import {Subject, Subscription, merge} from 'rxjs';
 import type {NgxMatEndDate, NgxMatStartDate} from './date-range-input-parts';
 import {MatDateRangePickerInput} from './date-range-picker';
-import {DateRange, MatDateSelectionModel} from './date-selection-model';
+import {NgxDateRange, NgxMatDateSelectionModel} from './date-selection-model';
 import {NgxMatDatepickerControl, NgxMatDatepickerPanel} from './datepicker-base';
 import {createMissingDateImplError} from './datepicker-errors';
 import {DateFilterFn, _MatFormFieldPartial, dateInputsHaveChanged} from './datepicker-input-base';
@@ -57,7 +57,7 @@ import {DateFilterFn, _MatFormFieldPartial, dateInputsHaveChanged} from './datep
 })
 export class NgxMatDateRangeInput<D>
   implements
-    MatFormFieldControl<DateRange<D>>,
+    MatFormFieldControl<NgxDateRange<D>>,
     NgxMatDatepickerControl<D>,
     MatDateRangePickerInput<D>,
     AfterContentInit,
@@ -110,7 +110,7 @@ export class NgxMatDateRangeInput<D>
   get rangePicker() {
     return this._rangePicker;
   }
-  set rangePicker(rangePicker: NgxMatDatepickerPanel<NgxMatDatepickerControl<D>, DateRange<D>, D>) {
+  set rangePicker(rangePicker: NgxMatDatepickerPanel<NgxMatDatepickerControl<D>, NgxDateRange<D>, D>) {
     if (rangePicker) {
       this._model = rangePicker.registerInput(this);
       this._rangePicker = rangePicker;
@@ -128,7 +128,7 @@ export class NgxMatDateRangeInput<D>
       this._registerModel(this._model!);
     }
   }
-  private _rangePicker: NgxMatDatepickerPanel<NgxMatDatepickerControl<D>, DateRange<D>, D>;
+  private _rangePicker: NgxMatDatepickerPanel<NgxMatDatepickerControl<D>, NgxDateRange<D>, D>;
 
   /** The id of the panel owned by this input. */
   _ariaOwns = signal<string | null>(null);
@@ -236,7 +236,7 @@ export class NgxMatDateRangeInput<D>
   _ariaDescribedBy: string | null = null;
 
   /** Date selection model currently registered with the input. */
-  private _model: MatDateSelectionModel<DateRange<D>> | undefined;
+  private _model: NgxMatDateSelectionModel<NgxDateRange<D>> | undefined;
 
   /** Separator text to be shown between the inputs. */
   @Input() separator = '–';
@@ -425,7 +425,7 @@ export class NgxMatDateRangeInput<D>
   }
 
   /** Registers the current date selection model with the start/end inputs. */
-  private _registerModel(model: MatDateSelectionModel<DateRange<D>>) {
+  private _registerModel(model: NgxMatDateSelectionModel<NgxDateRange<D>>) {
     if (this._startInput) {
       this._startInput._registerModel(model);
     }

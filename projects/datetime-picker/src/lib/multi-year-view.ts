@@ -42,7 +42,7 @@ import {
 import {createMissingDateImplError} from './datepicker-errors';
 import {Subscription} from 'rxjs';
 import {startWith} from 'rxjs/operators';
-import {DateRange} from './date-selection-model';
+import {NgxDateRange} from './date-selection-model';
 
 export const yearsPerPage = 24;
 
@@ -97,11 +97,11 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
 
   /** The currently selected date. */
   @Input()
-  get selected(): DateRange<D> | D | null {
+  get selected(): NgxDateRange<D> | D | null {
     return this._selected;
   }
-  set selected(value: DateRange<D> | D | null) {
-    if (value instanceof DateRange) {
+  set selected(value: NgxDateRange<D> | D | null) {
+    if (value instanceof NgxDateRange) {
       this._selected = value;
     } else {
       this._selected = this._dateAdapter.getValidDateOrNull(this._dateAdapter.deserialize(value));
@@ -109,7 +109,7 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
 
     this._setSelectedYear(value);
   }
-  private _selected: DateRange<D> | D | null;
+  private _selected: NgxDateRange<D> | D | null;
 
   /** The minimum selectable date. */
   @Input()
@@ -388,10 +388,10 @@ export class NgxMatMultiYearView<D> implements AfterContentInit, OnDestroy {
   }
 
   /** Sets the currently-highlighted year based on a model value. */
-  private _setSelectedYear(value: DateRange<D> | D | null) {
+  private _setSelectedYear(value: NgxDateRange<D> | D | null) {
     this._selectedYear = null;
 
-    if (value instanceof DateRange) {
+    if (value instanceof NgxDateRange) {
       const displayValue = value.start || value.end;
 
       if (displayValue) {

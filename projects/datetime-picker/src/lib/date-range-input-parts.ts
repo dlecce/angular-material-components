@@ -31,7 +31,7 @@ import {
 } from '@angular/forms';
 import {ErrorStateMatcher, _ErrorStateTracker} from '@angular/material/core';
 import {_computeAriaAccessibleName} from './aria-accessible-name';
-import {DateRange, DateSelectionModelChange} from './date-selection-model';
+import {NgxDateRange, NgxDateSelectionModelChange} from './date-selection-model';
 import {NgxMatDatepickerInputBase} from './datepicker-input-base';
 import {NgxMatDateRangeInput} from './date-range-input';
 
@@ -40,7 +40,7 @@ import {NgxMatDateRangeInput} from './date-range-input';
  */
 @Directive()
 abstract class MatDateRangeInputPartBase<D>
-  extends NgxMatDatepickerInputBase<DateRange<D>>
+  extends NgxMatDatepickerInputBase<NgxDateRange<D>>
   implements OnInit, AfterContentInit, DoCheck
 {
   _rangeInput = inject<NgxMatDateRangeInput<D>>(NgxMatDateRangeInput);
@@ -58,7 +58,7 @@ abstract class MatDateRangeInputPartBase<D>
 
   protected abstract override _validator: ValidatorFn | null;
   protected abstract override _assignValueToModel(value: D | null): void;
-  protected abstract override _getValueFromModel(modelValue: DateRange<D>): D | null;
+  protected abstract override _getValueFromModel(modelValue: NgxDateRange<D>): D | null;
   protected abstract _register(): void;
   protected readonly _dir = inject(Directionality, {optional: true});
   private _errorStateTracker: _ErrorStateTracker;
@@ -179,7 +179,7 @@ abstract class MatDateRangeInputPartBase<D>
     return this._rangeInput._groupDisabled;
   }
 
-  protected _shouldHandleChangeEvent({source}: DateSelectionModelChange<DateRange<D>>): boolean {
+  protected _shouldHandleChangeEvent({source}: NgxDateSelectionModelChange<NgxDateRange<D>>): boolean {
     return source !== this._rangeInput._startInput && source !== this._rangeInput._endInput;
   }
 
@@ -249,12 +249,12 @@ export class NgxMatStartDate<D> extends MatDateRangeInputPartBase<D> {
     this._rangeInput._startInput = this;
   }
 
-  protected _getValueFromModel(modelValue: DateRange<D>) {
+  protected _getValueFromModel(modelValue: NgxDateRange<D>) {
     return modelValue.start;
   }
 
   protected override _shouldHandleChangeEvent(
-    change: DateSelectionModelChange<DateRange<D>>,
+    change: NgxDateSelectionModelChange<NgxDateRange<D>>,
   ): boolean {
     if (!super._shouldHandleChangeEvent(change)) {
       return false;
@@ -268,7 +268,7 @@ export class NgxMatStartDate<D> extends MatDateRangeInputPartBase<D> {
 
   protected _assignValueToModel(value: D | null) {
     if (this._model) {
-      const range = new DateRange(value, this._model.selection.end);
+      const range = new NgxDateRange(value, this._model.selection.end);
       this._model.updateSelection(range, this);
       this._rangeInput._handleChildValueChange();
     }
@@ -337,12 +337,12 @@ export class NgxMatEndDate<D> extends MatDateRangeInputPartBase<D> {
 
   protected _validator = Validators.compose([...super._getValidators(), this._endValidator]);
 
-  protected _getValueFromModel(modelValue: DateRange<D>) {
+  protected _getValueFromModel(modelValue: NgxDateRange<D>) {
     return modelValue.end;
   }
 
   protected override _shouldHandleChangeEvent(
-    change: DateSelectionModelChange<DateRange<D>>,
+    change: NgxDateSelectionModelChange<NgxDateRange<D>>,
   ): boolean {
     if (!super._shouldHandleChangeEvent(change)) {
       return false;
@@ -356,7 +356,7 @@ export class NgxMatEndDate<D> extends MatDateRangeInputPartBase<D> {
 
   protected _assignValueToModel(value: D | null) {
     if (this._model) {
-      const range = new DateRange(this._model.selection.start, value);
+      const range = new NgxDateRange(this._model.selection.start, value);
       this._model.updateSelection(range, this);
     }
   }
