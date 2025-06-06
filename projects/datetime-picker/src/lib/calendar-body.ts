@@ -86,7 +86,7 @@ const passiveEventOptions = {passive: true};
  * @docs-private
  */
 @Component({
-  selector: 'ngx-mat-calendar-body',
+  selector: '[ngx-mat-calendar-body]',
   templateUrl: 'calendar-body.html',
   styleUrl: 'calendar-body.scss',
   host: {
