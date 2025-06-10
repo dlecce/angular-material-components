@@ -1,6 +1,6 @@
 {
-  "name": "datetime-picker",
-  "version": "0.0.1",
+  "name": "@dlecce/datetime-picker",
+  "version": "19.0.0",
   "peerDependencies": {
     "@angular/platform-browser": "^19.2.0",
     "@angular/common": "^19.2.0",
