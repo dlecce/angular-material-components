@@ -1,10 +1,19 @@
 <h1>{{title}}</h1>
 
 <mat-form-field>
-  <mat-label>From</mat-label>
-  <input matInput [ngxMatDatetimePicker]="picker" [formControl]="dateControl" />
-  <ngx-mat-datepicker-toggle matSuffix [for]="picker" />
-  <ngx-mat-datetime-picker #picker>
+  <mat-label>Start</mat-label>
+  <input matInput [ngxMatDatetimePicker]="startPcker" [formControl]="startControl" />
+  <ngx-mat-datepicker-toggle matSuffix [for]="startPcker" />
+  <ngx-mat-datetime-picker #startPcker />
+</mat-form-field>
+
+<br />
+
+<mat-form-field>
+  <mat-label>End</mat-label>
+  <input matInput [ngxMatDatetimePicker]="endPicker" [formControl]="endControl" />
+  <ngx-mat-datepicker-toggle matSuffix [for]="endPicker" />
+  <ngx-mat-datetime-picker #endPicker>
     <ngx-mat-datepicker-actions>
       <button mat-raised-button ngxMatDatepickerApply>
         <mat-icon>done</mat-icon>

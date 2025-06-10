@@ -28,5 +28,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class AppComponent {
   title = 'demo';
-  dateControl = new FormControl<Date | null>(null);
+  startControl = new FormControl<Date | null>(null);
+  endControl = new FormControl<Date | null>(null);
 }
